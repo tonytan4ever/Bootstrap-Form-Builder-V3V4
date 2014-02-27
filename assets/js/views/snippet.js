@@ -9,9 +9,9 @@ define([
   , "templates/snippet/snippet-templates"
   , "bootstrap"
 ], function(
-  $, _, Class
-  , _PopoverMain
-  , _PopoverInput
+  $, _, Class, 
+  _PopoverMain, 
+  _PopoverInput,
   //, _PopoverSelect
   //, _PopoverTextArea
   //, _PopoverTextAreaSplit
@@ -19,9 +19,7 @@ define([
   , _snippetTemplates
 ){
   return Class.extend({
-    tagName: "div"
-    , className: "component" 
-    , initialize: function(){
+    init: function(){
       this.template = _.template(_snippetTemplates[this.model.idFriendlyTitle()])
       this.popoverTemplates = {
         "input" : _.template(_PopoverInput)
