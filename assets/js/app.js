@@ -1,11 +1,23 @@
 define([
-       "jquery" ,
+       "jquery", "collections/snippets", "views/tab" ,
+       "text!data/input.json" , 
 ], function(
-  $ 
+  $, SnippetsCollection, TabView,
+  inputJSON
 ){
   return {
     initialize: function(){
-    	alert("Hello World!");
+    
+    	console.log(new SnippetsCollection(JSON.parse(inputJSON)).renderAll());
+    
+    	new TabView({
+    		title: "Input",
+    	});
+    	
+    	new TabView({
+        	title: "Radios / Checkboxes",
+      	});
+    	
   	}
  }
 });
