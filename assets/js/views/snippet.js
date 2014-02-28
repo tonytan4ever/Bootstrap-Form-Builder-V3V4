@@ -1,5 +1,5 @@
 define([
-  "jquery", "underscore", "class"
+  "jquery", "mustache", "underscore", "class"
   , "text!templates/popover/popover-main.html"
   , "text!templates/popover/popover-input.html"
   //, "text!templates/popover/popover-select.html"
@@ -9,18 +9,27 @@ define([
   , "templates/snippet/snippet-templates"
   , "bootstrap"
 ], function(
-  $, _, Class, 
+  $, Mustache, _, Class, 
   _PopoverMain, 
   _PopoverInput,
   //, _PopoverSelect
   //, _PopoverTextArea
   //, _PopoverTextAreaSplit
   //, _PopoverCheckbox
-  , _snippetTemplates
+  _snippetTemplates
 ){
   return Class.extend({
-    init: function(){
-      this.template = _.template(_snippetTemplates[this.model.idFriendlyTitle()])
+    init: function(options){
+      this.clsname = "SnippetView";
+      
+      this.options = options;
+      if("model" in options){
+      	this.model = options.model;
+      }
+      
+      this.$el = $('<div/>').addClass("component");
+      this.template = _.partial(Mustache.to_html,
+                               _snippetTemplates[this.model.idFriendlyTitle()]);
       this.popoverTemplates = {
         "input" : _.template(_PopoverInput)
         //, "select" : _.template(_PopoverSelect)
@@ -33,24 +42,25 @@ define([
     
     render: function(withAttributes){
       var that = this;
-      var content = _.template(_PopoverMain)({
+      var content = Mustache.to_html(_PopoverMain , {
         "title": that.model.get("title"),
         "items" : that.model.get("fields"),
         "popoverTemplates": that.popoverTemplates
       });
+      
       if (withAttributes) {
         return this.$el.html(
           that.template(that.model.getValues())
         ).attr({
-          "data-content"     : content
-          , "data-title"     : that.model.get("title")
-          , "data-trigger"   : "manual"
-          , "data-html"      : true
+          "data-content"   : content, 
+          "data-title"     : that.model.get("title"), 
+          "data-trigger"   : "manual", 
+          "data-html"      : true
         });
       } else {
         return this.$el.html(
           that.template(that.model.getValues())
-        )
+        );
       }
     }
   });

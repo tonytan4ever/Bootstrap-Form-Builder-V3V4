@@ -6,18 +6,17 @@ define([
   inputJSON
 ){
   return {
-    initialize: function(){
-    
-    	console.log(new SnippetsCollection(JSON.parse(inputJSON)).renderAll());
-    
-    	new TabView({
+    initialize: function(){ 
+    	var first = new TabView({
     		title: "Input",
+    		collection: new SnippetsCollection(JSON.parse(inputJSON)),
     	});
     	
     	new TabView({
         	title: "Radios / Checkboxes",
       	});
     	
+    	first.$el.addClass("active");
   	}
  }
 });

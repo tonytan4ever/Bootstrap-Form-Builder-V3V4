@@ -8,8 +8,6 @@ define([
   TabSnippetView
 ){
   return Class.extend({
-    model: SnippetModel,
-    
     init: function(options) {
     	this.data = options;
     },
@@ -21,7 +19,7 @@ define([
     renderAll: function(){
       return this.map(function(snippet){
         //return new SnippetModel(snippet).getValues();
-        return new TabSnippetView({model: snippet}).render();
+        return new TabSnippetView({model: new SnippetModel(snippet)}).render();
       });
     }
   });

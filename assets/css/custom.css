@@ -12,6 +12,7 @@ body {
 
 #components {
   min-height: 500px;
+  margin-top: 5px;
 }
 
 #target fieldset {
