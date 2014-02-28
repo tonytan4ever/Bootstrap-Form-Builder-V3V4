@@ -1,44 +1,51 @@
 define([
-       "jquery", "underscore", "class", 
+       "jquery", "mustache", "underscore", "class", 
        "views/temp-snippet", 
        //"helper/pubsub", 
        "text!templates/app/renderform.html"
 ], function(
-  $, _, Class, 
+  $, Mustache, _, Class, 
   TempSnippetView, 
   //PubSub, 
   _renderForm
 ){
   return Class.extend({
-    tagName: "fieldset", 
     
-    initia: function(){
-      this.collection.on("add", this.render, this);
-      this.collection.on("remove", this.render, this);
-      this.collection.on("change", this.render, this);
-      PubSub.on("mySnippetDrag", this.handleSnippetDrag, this);
-      PubSub.on("tempMove", this.handleTempMove, this);
-      PubSub.on("tempDrop", this.handleTempDrop, this);
+    init: function(options){
+      // class name is actually not needed
+      this.clsname="MyFormView";
+      
+      this.collection = options.collection;
+    
+      //this.collection.on("add", this.render, this);
+      //this.collection.on("remove", this.render, this);
+      //this.collection.on("change", this.render, this);
+      //PubSub.on("mySnippetDrag", this.handleSnippetDrag, this);
+      //PubSub.on("tempMove", this.handleTempMove, this);
+      //PubSub.on("tempDrop", this.handleTempDrop, this);
+      this.$el = $("<fieldset/>")
       this.$build = $("#build");
-      this.renderForm = _.template(_renderForm);
+      this.renderForm = _.partial(Mustache.to_html, _renderForm);
       this.render();
-    }
-
-    , render: function(){
+    }, 
+    
+    render: function(){
       //Render Snippet Views
       this.$el.empty();
       var that = this;
       _.each(this.collection.renderAll(), function(snippet){
         that.$el.append(snippet);
       });
+      console.log(_.map(this.collection.renderAllClean(), function(e){return e.html()}).join("\n"));
       $("#render").val(that.renderForm({
         text: _.map(this.collection.renderAllClean(), function(e){return e.html()}).join("\n")
       }));
-      this.$el.appendTo("#build form");
-      this.delegateEvents();
-    }
-
-    , getBottomAbove: function(eventY){
+      
+      this.$el.appendTo("#build > form");
+      //this.delegateEvents(); 
+    }, 
+    
+    getBottomAbove: function(eventY){
       var myFormBits = $(this.$el.find(".component"));
       var topelement = _.find(myFormBits, function(renderedSnippet) {
         if (($(renderedSnippet).position().top + $(renderedSnippet).height()) > eventY  - 90) {
@@ -53,15 +60,15 @@ define([
       } else {
         return myFormBits[0];
       }
-    }
-
-    , handleSnippetDrag: function(mouseEvent, snippetModel) {
+    }, 
+    
+    handleSnippetDrag: function(mouseEvent, snippetModel) {
       $("body").append(new TempSnippetView({model: snippetModel}).render());
       this.collection.remove(snippetModel);
       PubSub.trigger("newTempPostRender", mouseEvent);
-    }
-
-    , handleTempMove: function(mouseEvent){
+    }, 
+    
+    handleTempMove: function(mouseEvent){
       $(".target").removeClass("target");
       if(mouseEvent.pageX >= this.$build.position().left &&
           mouseEvent.pageX < (this.$build.width() + this.$build.position().left) &&
@@ -71,9 +78,9 @@ define([
       } else {
         $(".target").removeClass("target");
       }
-    }
-
-    , handleTempDrop: function(mouseEvent, model, index){
+    }, 
+    
+    handleTempDrop: function(mouseEvent, model, index){
       if(mouseEvent.pageX >= this.$build.position().left &&
          mouseEvent.pageX < (this.$build.width() + this.$build.position().left) &&
          mouseEvent.pageY >= this.$build.position().top &&
