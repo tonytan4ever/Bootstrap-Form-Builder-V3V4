@@ -1,13 +1,13 @@
 <!-- Appended checkbox -->
-<div class="control-group">
-  <label class="control-label" for="{{ id }}">{{ label }}</label>
-  <div class="controls">
-    <div class="input-append">
-      <input id="{{ id }}" name="{{ id }}" class="span2" type="text" placeholder="{{ placeholder }}" <% if(required) {%> required <% } %> />
-      <span class="add-on">
-        <input type="checkbox"<% if (checked){ %> checked <% } %>>
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="{{ id }}">{{ label }}</label>
+  <div class="{{ inputwidth }}">
+    <div class="input-group">
+      <input id="{{ id }}" name="{{ id }}" class="form-control {{ inputsize }}" type="text" placeholder="{{ placeholder }}" {{#requried}} required {{/requried}} />
+      <span class="input-group-addon">
+        <input type="checkbox" {{#checked}}checked="checked"{{/checked}} />
       </span>
     </div>
-    <% if (helptext.length > 0) { %><p class="help-block">{{ helptext }}</p><% } %>
+    {{#helptext.length}} <span class="help-block">{{ helptext }}</span> {{/helptext.length}}
   </div>
 </div>

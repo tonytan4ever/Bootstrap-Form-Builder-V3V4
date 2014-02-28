@@ -7,7 +7,7 @@ define([
 ){
   return {
     initialize: function(){ 
-    	var first = new TabView({
+    	new TabView({
     		title: "Input",
     		collection: new SnippetsCollection(JSON.parse(inputJSON)),
     	});
@@ -16,7 +16,9 @@ define([
         	title: "Radios / Checkboxes",
       	});
     	
-    	first.$el.addClass("active");
+    	 //Make the first tab active!
+	     $("#components .tab-pane").first().addClass("active");
+	     $("#formtabs li").first().addClass("active");
   	}
  }
 });

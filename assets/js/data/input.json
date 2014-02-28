@@ -232,33 +232,39 @@
         "label": "Input Size",
         "value": [
           {
-            "label": "Mini",
-            "value": "input-mini",
-            "selected": false
-          },
-          {
             "label": "Small",
-            "value": "input-small",
+            "value": "input-sm",
             "selected": false
           },
           {
             "label": "Medium",
-            "value": "input-medium",
-            "selected": false
-          },
-          {
-            "label": "Large",
-            "value": "input-large",
-            "selected": false
-          },
-          {
-            "label": "Xlarge",
-            "value": "input-xlarge",
+            "value": "input-md",
             "selected": true
           },
           {
-            "label": "Xxlarge",
-            "value": "input-xxlarge",
+            "label": "Large",
+            "value": "input-lg",
+            "selected": false
+          }
+        ]
+      },
+      "inputwidth": {
+        "type": "select",
+        "label": "Input Width",
+        "value": [
+          {
+            "label": "Short",
+            "value": "col-sm-4",
+            "selected": false
+          },
+          {
+            "label": "Medium",
+            "value": "col-sm-6",
+            "selected": true
+          },
+          {
+            "label": "Long",
+            "value": "col-sm-8",
             "selected": false
           }
         ]
@@ -303,33 +309,39 @@
         "label": "Input Size",
         "value": [
           {
-            "label": "Mini",
-            "value": "input-mini",
-            "selected": false
-          },
-          {
             "label": "Small",
-            "value": "input-small",
+            "value": "input-sm",
             "selected": false
           },
           {
             "label": "Medium",
-            "value": "input-medium",
-            "selected": false
-          },
-          {
-            "label": "Large",
-            "value": "input-large",
-            "selected": false
-          },
-          {
-            "label": "Xlarge",
-            "value": "input-xlarge",
+            "value": "input-md",
             "selected": true
           },
           {
-            "label": "Xxlarge",
-            "value": "input-xxlarge",
+            "label": "Large",
+            "value": "input-lg",
+            "selected": false
+          }
+        ]
+      },
+      "inputwidth": {
+        "type": "select",
+        "label": "Input Width",
+        "value": [
+          {
+            "label": "Short",
+            "value": "col-sm-4",
+            "selected": false
+          },
+          {
+            "label": "Medium",
+            "value": "col-sm-6",
+            "selected": true
+          },
+          {
+            "label": "Long",
+            "value": "col-sm-8",
             "selected": false
           }
         ]
@@ -369,33 +381,39 @@
         "label": "Input Size",
         "value": [
           {
-            "label": "Mini",
-            "value": "input-mini",
-            "selected": false
-          },
-          {
             "label": "Small",
-            "value": "input-small",
+            "value": "input-sm",
             "selected": false
           },
           {
             "label": "Medium",
-            "value": "input-medium",
-            "selected": false
-          },
-          {
-            "label": "Large",
-            "value": "input-large",
-            "selected": false
-          },
-          {
-            "label": "Xlarge",
-            "value": "input-xlarge",
+            "value": "input-md",
             "selected": true
           },
           {
-            "label": "Xxlarge",
-            "value": "input-xxlarge",
+            "label": "Large",
+            "value": "input-lg",
+            "selected": false
+          }
+        ]
+      },
+      "inputwidth": {
+        "type": "select",
+        "label": "Input Width",
+        "value": [
+          {
+            "label": "Short",
+            "value": "col-sm-4",
+            "selected": false
+          },
+          {
+            "label": "Medium",
+            "value": "col-sm-6",
+            "selected": true
+          },
+          {
+            "label": "Long",
+            "value": "col-sm-8",
             "selected": false
           }
         ]
@@ -440,33 +458,39 @@
         "label": "Input Size",
         "value": [
           {
-            "label": "Mini",
-            "value": "input-mini",
-            "selected": false
-          },
-          {
             "label": "Small",
-            "value": "input-small",
+            "value": "input-sm",
             "selected": false
           },
           {
             "label": "Medium",
-            "value": "input-medium",
-            "selected": false
-          },
-          {
-            "label": "Large",
-            "value": "input-large",
-            "selected": false
-          },
-          {
-            "label": "Xlarge",
-            "value": "input-xlarge",
+            "value": "input-md",
             "selected": true
           },
           {
-            "label": "Xxlarge",
-            "value": "input-xxlarge",
+            "label": "Large",
+            "value": "input-lg",
+            "selected": false
+          }
+        ]
+      },
+      "inputwidth": {
+        "type": "select",
+        "label": "Input Width",
+        "value": [
+          {
+            "label": "Short",
+            "value": "col-sm-4",
+            "selected": false
+          },
+          {
+            "label": "Medium",
+            "value": "col-sm-6",
+            "selected": true
+          },
+          {
+            "label": "Long",
+            "value": "col-sm-8",
             "selected": false
           }
         ]
@@ -525,33 +549,39 @@
         "label": "Input Size",
         "value": [
           {
-            "label": "Mini",
-            "value": "input-mini",
-            "selected": false
-          },
-          {
             "label": "Small",
-            "value": "input-small",
+            "value": "input-sm",
             "selected": false
           },
           {
             "label": "Medium",
-            "value": "input-medium",
-            "selected": false
-          },
-          {
-            "label": "Large",
-            "value": "input-large",
-            "selected": false
-          },
-          {
-            "label": "Xlarge",
-            "value": "input-xlarge",
+            "value": "input-md",
             "selected": true
           },
           {
-            "label": "Xxlarge",
-            "value": "input-xxlarge",
+            "label": "Large",
+            "value": "input-lg",
+            "selected": false
+          }
+        ]
+      },
+      "inputwidth": {
+        "type": "select",
+        "label": "Input Width",
+        "value": [
+          {
+            "label": "Short",
+            "value": "col-sm-4",
+            "selected": false
+          },
+          {
+            "label": "Medium",
+            "value": "col-sm-6",
+            "selected": true
+          },
+          {
+            "label": "Long",
+            "value": "col-sm-8",
             "selected": false
           }
         ]
@@ -565,6 +595,11 @@
         "type": "input",
         "label": "Placeholder",
         "value": "placeholder"
+      },
+      "helptext": {
+        "type": "input",
+        "label": "Help Text",
+        "value": "help"
       },
       "required": {
         "type": "checkbox",
@@ -581,10 +616,36 @@
         "label": "ID / Name",
         "value": "textarea"
       },
+      "inputwidth": {
+        "type": "select",
+        "label": "Input Width",
+        "value": [
+          {
+            "label": "Short",
+            "value": "col-sm-4",
+            "selected": false
+          },
+          {
+            "label": "Medium",
+            "value": "col-sm-6",
+            "selected": true
+          },
+          {
+            "label": "Long",
+            "value": "col-sm-8",
+            "selected": false
+          }
+        ]
+      },
       "label": {
         "type": "input",
         "label": "Label Text",
         "value": "Text Area"
+      },
+      "helptext": {
+        "type": "input",
+        "label": "Help Text",
+        "value": "help"
       },
       "textarea": {
         "type": "textarea",

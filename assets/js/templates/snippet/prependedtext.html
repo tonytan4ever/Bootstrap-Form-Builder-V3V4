@@ -1,11 +1,11 @@
 <!-- Prepended text-->
-<div class="control-group">
-  <label class="control-label" for="<%= id %>"><%= label %></label>
-  <div class="controls">
-    <div class="input-prepend">
-      <span class="add-on"><%= prepend %></span>
-      <input id="<%= id %>" name="<%= id %>" class="<%= inputsize %>" placeholder="<%= placeholder %>" type="text"<% if(required) {%> required <% } %> />
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="{{ id }}">{{ label }}</label>
+  <div class="{{ inputwidth }}">
+    <div class="input-group">
+      <span class="input-group-addon">{{ prepend }}</span>
+      <input id="{{ id }}" name="{{ id }}" class="form-control {{ inputsize }}" placeholder="{{ placeholder }}" type="text" {{#requried}} required {{/requried}} />
     </div>
-    <% if (helptext.length > 0) { %><p class="help-block"><%= helptext %></p><% } %>
+    {{#helptext.length}} <span class="help-block">{{ helptext }}</span> {{/helptext.length}}
   </div>
 </div>
