@@ -71,10 +71,10 @@ define([
       //PubSub.trigger("newTempPostRender", mouseEvent);
     }, 
     
-    handleTempMove: function(tempMoveEvent, mouseEvent){
+    handleTempMove: function(tempMoveEvent, mouseEvent, widthOffset){
       $(".target").removeClass("target");
-      if(mouseEvent.pageX >= this.$build.position().left &&
-          //mouseEvent.pageX < (this.$build.width() + this.$build.position().left) &&
+      if(mouseEvent.pageX >= this.$build.offset().left  &&
+          mouseEvent.pageX < (this.$build.width() + this.$build.position().left + widthOffset) &&
           mouseEvent.pageY >= this.$build.position().top && 
           mouseEvent.pageY < (this.$build.height() + this.$build.position().top)
           ){
@@ -85,11 +85,8 @@ define([
       }
     }, 
     
-    handleTempDrop: function(tempDropEvent, mouseEvent, model, index){
-      if(mouseEvent.pageX >= this.$build.position().left &&
-         //mouseEvent.pageX < (this.$build.width() + this.$build.position().left) &&
-         mouseEvent.pageY >= this.$build.position().top &&
-         mouseEvent.pageY < (this.$build.height() + this.$build.position().top)) {
+    handleTempDrop: function(tempDropEvent, mouseEvent, model, widthOffset, index){
+      if($(".target").length) {
         var index = $(".target").index();
         $(".target").removeClass("target");
         this.collection.add(model,{at: index+1});

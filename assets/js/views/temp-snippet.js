@@ -41,7 +41,7 @@ define([
       this.tempForm.style.left = (mouseX - this.halfWidth) + "px";
       // Make sure the element has been drawn and
       // has height in the dom before triggering.
-      $("#build > form > fieldset").trigger("tempMove", mouseEvent);
+      $("#build > form > fieldset").trigger("tempMove", [mouseEvent, this.halfWidth]);
     }, 
     
     
@@ -52,7 +52,7 @@ define([
     
     mouseUpHandler: function(mouseEvent){
       mouseEvent.preventDefault();
-      $("#build > form > fieldset").trigger("tempDrop", [mouseEvent, this.model]);
+      $("#build > form > fieldset").trigger("tempDrop", [mouseEvent, this.model, this.halfWidth]);
       this.$el.remove();
     }
   });
