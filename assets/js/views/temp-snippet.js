@@ -11,11 +11,9 @@ define([
     init: function(options){
       this.clsname = "TempSnippetView";
       this._super(options);
+    
       this.$el.addClass("temp");
       this.$el.on("newTempPostRender", $.proxy(this.postRender, this));
-      /*
-      this.constructor.__super__.initialize.call(this);
-      */
       this.tempTemplate = _.partial(Mustache.to_html, _tempTemplate);
     },
     
@@ -43,7 +41,7 @@ define([
       this.tempForm.style.left = (mouseX - this.halfWidth) + "px";
       // Make sure the element has been drawn and
       // has height in the dom before triggering.
-      this.$el.trigger("tempMove", mouseEvent);
+      $("#build > form > fieldset").trigger("tempMove", mouseEvent);
     }, 
     
     
@@ -54,7 +52,7 @@ define([
     
     mouseUpHandler: function(mouseEvent){
       mouseEvent.preventDefault();
-      this.$el.trigger("tempDrop", mouseEvent, this.model);
+      $("#build > form > fieldset").trigger("tempDrop", [mouseEvent, this.model]);
       this.$el.remove();
     }
   });

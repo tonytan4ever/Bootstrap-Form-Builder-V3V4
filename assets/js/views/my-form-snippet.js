@@ -2,12 +2,10 @@ define([
        "jquery", "underscore", "class",
        "views/snippet", 
        "views/temp-snippet",
-       //"helper/pubsub"
 ], function(
   $, _, Class,
   SnippetView, 
   TempSnippetView
-  //PubSub
 ){
   return SnippetView.extend({
     events:{
@@ -32,8 +30,8 @@ define([
             Math.abs(mouseDownEvent.pageX - mouseMoveEvent.pageX) > 10 ||
             Math.abs(mouseDownEvent.pageY - mouseMoveEvent.pageY) > 10
           ){
-            //that.$el.popover('destroy');
-            PubSub.trigger("mySnippetDrag", mouseDownEvent, that.model);
+            that.$el.popover('destroy');
+            $("#build > form > fieldset").trigger("mySnippetDrag", mouseDownEvent, that.model);
             that.mouseUpHandler();
           };
         });

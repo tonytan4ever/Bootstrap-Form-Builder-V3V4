@@ -17,16 +17,16 @@ define([
       
       this.collection = options.collection;
     
-      //this.collection.on("add", $.proxy(this.render, this));
+      this.collection.on("add", $.proxy(this.render, this));
       //this.collection.on("remove", $.proxy(this.render, this));
       //this.collection.on("change", $.proxy(this.render, this));
       
       this.$el = $("<fieldset/>")
       this.$build = $("#build");
       
-      //PubSub.on("mySnippetDrag", this.handleSnippetDrag, this);
-      //PubSub.on("tempMove", this.handleTempMove, this);
-      //PubSub.on("tempDrop", this.handleTempDrop, this);
+      //this.$el.on("mySnippetDrag", $.proxy(this.handleSnippetDrag, this));
+      this.$el.on("tempMove", $.proxy(this.handleTempMove, this));
+      this.$el.on("tempDrop", $.proxy(this.handleTempDrop, this));
       
       this.renderForm = _.partial(Mustache.to_html, _renderForm);
       this.render();
@@ -57,6 +57,7 @@ define([
           return false;
         }
       });
+      
       if (topelement){
         return topelement;
       } else {
@@ -67,24 +68,26 @@ define([
     handleSnippetDrag: function(mouseEvent, snippetModel) {
       $("body").append(new TempSnippetView({model: snippetModel}).render());
       this.collection.remove(snippetModel);
-      PubSub.trigger("newTempPostRender", mouseEvent);
+      //PubSub.trigger("newTempPostRender", mouseEvent);
     }, 
     
-    handleTempMove: function(mouseEvent){
+    handleTempMove: function(tempMoveEvent, mouseEvent){
       $(".target").removeClass("target");
       if(mouseEvent.pageX >= this.$build.position().left &&
-          mouseEvent.pageX < (this.$build.width() + this.$build.position().left) &&
-          mouseEvent.pageY >= this.$build.position().top &&
-          mouseEvent.pageY < (this.$build.height() + this.$build.position().top)){
+          //mouseEvent.pageX < (this.$build.width() + this.$build.position().left) &&
+          mouseEvent.pageY >= this.$build.position().top && 
+          mouseEvent.pageY < (this.$build.height() + this.$build.position().top)
+          ){
+        
         $(this.getBottomAbove(mouseEvent.pageY)).addClass("target");
       } else {
         $(".target").removeClass("target");
       }
     }, 
     
-    handleTempDrop: function(mouseEvent, model, index){
+    handleTempDrop: function(tempDropEvent, mouseEvent, model, index){
       if(mouseEvent.pageX >= this.$build.position().left &&
-         mouseEvent.pageX < (this.$build.width() + this.$build.position().left) &&
+         //mouseEvent.pageX < (this.$build.width() + this.$build.position().left) &&
          mouseEvent.pageY >= this.$build.position().top &&
          mouseEvent.pageY < (this.$build.height() + this.$build.position().top)) {
         var index = $(".target").index();
