@@ -28,6 +28,13 @@ define([
       }
       
       this.$el = $('<div/>').addClass("component");
+      if(this.events != null)
+      	_.each(this.events, $.proxy(function(val, key) {
+	    		//console.log($.proxy(this[this.events[key]],this));
+	    		this.$el.bind(key, $.proxy(this[this.events[key]],this));
+      		}, this)
+      	);
+      
       this.template = _.partial(Mustache.to_html,
                                _snippetTemplates[this.model.idFriendlyTitle()]);
       this.popoverTemplates = {

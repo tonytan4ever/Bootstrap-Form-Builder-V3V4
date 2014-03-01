@@ -17,14 +17,17 @@ define([
       
       this.collection = options.collection;
     
-      //this.collection.on("add", this.render, this);
-      //this.collection.on("remove", this.render, this);
-      //this.collection.on("change", this.render, this);
+      //this.collection.on("add", $.proxy(this.render, this));
+      //this.collection.on("remove", $.proxy(this.render, this));
+      //this.collection.on("change", $.proxy(this.render, this));
+      
+      this.$el = $("<fieldset/>")
+      this.$build = $("#build");
+      
       //PubSub.on("mySnippetDrag", this.handleSnippetDrag, this);
       //PubSub.on("tempMove", this.handleTempMove, this);
       //PubSub.on("tempDrop", this.handleTempDrop, this);
-      this.$el = $("<fieldset/>")
-      this.$build = $("#build");
+      
       this.renderForm = _.partial(Mustache.to_html, _renderForm);
       this.render();
     }, 
@@ -36,7 +39,6 @@ define([
       _.each(this.collection.renderAll(), function(snippet){
         that.$el.append(snippet);
       });
-      console.log(_.map(this.collection.renderAllClean(), function(e){return e.html()}).join("\n"));
       $("#render").val(that.renderForm({
         text: _.map(this.collection.renderAllClean(), function(e){return e.html()}).join("\n")
       }));

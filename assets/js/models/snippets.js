@@ -3,7 +3,8 @@ define([
 ], function($,  _, Class) {
   return Class.extend({
     init: function(options){
-    	this.options = options
+    	this.options = options;
+    	this.attributes = options;
     },
     
     get: function(k) {
