@@ -61,9 +61,9 @@ define([
         var fields = $(".popover .field");
         _.each(fields, function(e){
 
-          var $e = $(e)
-          , type = $e.attr("data-type")
-          , name = $e.attr("id");
+          var $e = $(e), 
+              type = $e.attr("data-type"), 
+              name = $e.attr("id");
 
           switch(type) {
             case "checkbox":
@@ -91,7 +91,8 @@ define([
               break;
           }
         });
-        //boundContext.model.trigger("change");
+        boundContext.parentModel.change(boundContext.model, 
+                         {at:boundContext.$el.index()});
         $(".popover").remove();
       }
     }, 
@@ -100,8 +101,6 @@ define([
       return function(mouseEvent) {
         mouseEvent.preventDefault();
         $(".popover").remove();
-        console.log(boundContext.options);
-        console.log(boundContext.parentModel);
         //boundContext.model.trigger("change");
       }
     }
