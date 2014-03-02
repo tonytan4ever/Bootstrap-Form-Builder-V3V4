@@ -1,11 +1,10 @@
 define([
        "jquery", "underscore", "mustache", 
        "views/snippet", 
-       "text!templates/app/temp.html", 
-       //"helper/pubsub"
+       "text!templates/app/temp.html"
 ], function(
   $, _, Mustache,
-  SnippetView, _tempTemplate//, PubSub
+  SnippetView, _tempTemplate
 ){
   return SnippetView.extend({
     init: function(options){

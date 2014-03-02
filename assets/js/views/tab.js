@@ -35,7 +35,6 @@ define([ 'jquery', 'underscore', 'mustache', 'class', "text!templates/app/tab-na
 		  // Render tab
 		  this.$el.attr("id", this.id);
 		  this.$el.appendTo(".tab-content");
-		  //this.delegateEvents();
 		}
 	
 	})

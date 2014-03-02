@@ -1,10 +1,13 @@
 <!-- Multiple Radios -->
-<div class="control-group">
-  <label class="control-label" for="<%= name %>"><%= label %></label>
-  <div class="controls"><% _.each(radios, function(radio, i){ %>
-    <label class="radio" for="<%= name+'-'+i %>">
-      <input type="radio" name="<%= name %>" id="<%= name+'-'+i %>" value="<%= radio %>"  <% if (i < 1) { %> checked="checked" <% } %><% if(required){ %> required="required"<% } %>>
-      <%= radio %>
-    </label><% }); %>
+<div class="form-group">
+  <label class="col-md-4 control-label" for="{{ name }}">{{ label }}</label>
+  <div class="col-md-4">{{ #radios }}
+    <div class="radio">
+	    <label  for="{{ name }}-{{ index }}">
+	      <input type="radio" name="{{ name }}" id="{{ name }}-{{ getIndex }}" value="{{ #radiosValues }}{{ #getNthValue }}{{.}}{{/getNthValue}}{{ /radiosValues }}"  {{#first}} checked="checked" {{/first}}>
+	      {{ . }}
+	    </label>
+	</div>{{ /radios }}
+	{{ resetIndex }}
   </div>
 </div>

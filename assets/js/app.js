@@ -4,7 +4,7 @@ define([
        "collections/my-form-snippets", 
        "views/tab",
        "views/my-form",
-       "text!data/input.json",
+       "text!data/input.json", "text!data/radio.json", "text!data/select.json", "text!data/button.json",
        "text!templates/app/render.html",  "text!templates/app/about.html",  
 ], function(
   $, 
@@ -12,7 +12,7 @@ define([
   MyFormSnippetsCollection,
   TabView,
   MyFormView,
-  inputJSON,
+  inputJSON, radioJSON, selectJSON, buttonJSON,
   renderTab, aboutTab
 ){
   return {
@@ -24,6 +24,17 @@ define([
     	
     	new TabView({
         	title: "Radios / Checkboxes",
+        	collection: new SnippetsCollection(JSON.parse(radioJSON)),
+      	});
+      	
+      	new TabView({
+        	title: "Select",
+        	collection: new SnippetsCollection(JSON.parse(selectJSON)),
+      	});
+      	
+      	new TabView({
+        	title: "Buttons",
+        	collection: new SnippetsCollection(JSON.parse(buttonJSON)),
       	});
       	
       	new TabView({

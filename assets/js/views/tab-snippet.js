@@ -3,13 +3,11 @@ define([
        "models/snippets", 
        "views/snippet", 
        "views/temp-snippet", 
-       //"helper/pubsub"
 ], function(
   $, _, 
   SnippetModel, 
   SnippetView, 
   TempSnippetView 
-  //PubSub
 ){
   return SnippetView.extend({
     events:{
