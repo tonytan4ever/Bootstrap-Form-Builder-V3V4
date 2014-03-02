@@ -13,14 +13,20 @@ define([
     model: SnippetModel, 
     
     renderAll: function(){
+      var that = this;
       return this.map(function(snippet){
-        return new MyFormSnippetView({model: new SnippetModel(snippet)}).render(true);
+        return new MyFormSnippetView({model: new SnippetModel(snippet),
+                                      parentModel: that,
+                                      }).render(true);
       })
     }, 
     
     renderAllClean: function(){
+      var that = this;
       return this.map(function(snippet){
-        return new MyFormSnippetView({model: new SnippetModel(snippet)}).render(false);
+        return new MyFormSnippetView({model: new SnippetModel(snippet),
+        						      parentModel: that,
+        						     }).render(false);
       });
     }
   });

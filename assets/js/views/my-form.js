@@ -1,12 +1,10 @@
 define([
        "jquery", "mustache", "underscore", "class", 
-       "views/temp-snippet", 
-       //"helper/pubsub", 
+       "views/temp-snippet",  
        "text!templates/app/renderform.html"
 ], function(
   $, Mustache, _, Class, 
   TempSnippetView, 
-  //PubSub, 
   _renderForm
 ){
   return Class.extend({

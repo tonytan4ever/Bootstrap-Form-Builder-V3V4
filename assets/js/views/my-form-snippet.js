@@ -1,13 +1,20 @@
 define([
        "jquery", "underscore", "class",
        "views/snippet", 
-       "views/temp-snippet",
 ], function(
   $, _, Class,
-  SnippetView, 
-  TempSnippetView
+  SnippetView
 ){
   return SnippetView.extend({
+    init: function(options){
+    	this._super(options);
+        
+        // class name is actually not needed;
+        this.clsname = "MyFormSnippetView";
+        this.parentModel = this.options.parentModel;
+        this.options = _.omit(this.options, 'parentModel');
+    },
+    
     events:{
       "click"   : "preventPropagation" //stops checkbox / radio reacting.
       , "mousedown" : "mouseDownHandler"
@@ -42,7 +49,7 @@ define([
     preventPropagation: function(e) {
       e.stopPropagation();
       e.preventDefault();
-    }, 
+    },
     
     mouseUpHandler : function(mouseUpEvent) {
         $("body").off("mousemove");
@@ -84,7 +91,7 @@ define([
               break;
           }
         });
-        boundContext.model.trigger("change");
+        //boundContext.model.trigger("change");
         $(".popover").remove();
       }
     }, 
@@ -93,7 +100,9 @@ define([
       return function(mouseEvent) {
         mouseEvent.preventDefault();
         $(".popover").remove();
-        boundContext.model.trigger("change");
+        console.log(boundContext.options);
+        console.log(boundContext.parentModel);
+        //boundContext.model.trigger("change");
       }
     }
 

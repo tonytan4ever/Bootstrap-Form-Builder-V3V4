@@ -1,0 +1,11 @@
+<div class="form-group">
+	<label class="col-md-12 control-label"> {{ label }} </label>
+	<div class="col-md-10">
+	<textarea class="form-control field" data-type="{{ type }}" id='{{ name }}'>
+	{{ #value }}
+	    {{.}}
+	{{ /value }}
+	"\n"
+	</textarea>
+	</div>
+</div>
