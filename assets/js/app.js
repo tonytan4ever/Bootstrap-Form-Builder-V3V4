@@ -4,14 +4,16 @@ define([
        "collections/my-form-snippets", 
        "views/tab",
        "views/my-form",
-       "text!data/input.json" , 
+       "text!data/input.json",
+       "text!templates/app/render.html",  "text!templates/app/about.html",  
 ], function(
   $, 
   SnippetsCollection, 
   MyFormSnippetsCollection,
   TabView,
   MyFormView,
-  inputJSON
+  inputJSON,
+  renderTab, aboutTab
 ){
   return {
     initialize: function(){ 
@@ -23,13 +25,23 @@ define([
     	new TabView({
         	title: "Radios / Checkboxes",
       	});
+      	
+      	new TabView({
+	        title: "Rendered", 
+	        content: renderTab
+	    });
+      
+        new TabView({
+        	title: "About", 
+        	content: aboutTab
+        });
     	
-    	 //Make the first tab active!
-	     $("#components .tab-pane").first().addClass("active");
-	     $("#formtabs li").first().addClass("active");
+    	//Make the first tab active!
+	    $("#components .tab-pane").first().addClass("active");
+	    $("#formtabs li").first().addClass("active");
 	     
 	     	     
-	     new MyFormView({
+	    new MyFormView({
         	title: "Original", 
         	collection: new MyFormSnippetsCollection([
 		          { "title" : "Form Name", 
@@ -42,7 +54,7 @@ define([
 		            }
 		          }
 		        ])
-		 });
+		});
   	}
  }
 });
