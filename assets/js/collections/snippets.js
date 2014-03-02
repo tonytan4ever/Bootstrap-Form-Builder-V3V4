@@ -41,7 +41,7 @@ define([
     },
     
     change: function(item, options) {
-    	if(!options.at)
+    	if(!options.at && options.at < 0)
           throw "Must specify the index of the element to change";
         else
           index = options.at; 
