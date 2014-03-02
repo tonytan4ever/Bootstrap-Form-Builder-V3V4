@@ -37,7 +37,7 @@ define([
       _.each(this.collection.renderAll(), function(snippet){
         that.$el.append(snippet);
       });
-      $("#render").val(that.renderForm({
+      $("#render").html(that.renderForm({
         text: _.map(this.collection.renderAllClean(), function(e){return e.html()}).join("\n")
       }));
       
