@@ -32,19 +32,21 @@ define([
     },
     
     remove: function(item, options) {
-    	var index = this.data.length;
-    	if(options) {
-    		index = options.at;
-    	}
-    	this.data.splice(index, 0, item);
+        if(!options.at)
+          throw "Must specify the index of the element to remove";
+        else
+          index = options.at; 
+    	this.data.splice(index, 1);
+    	this.$el.trigger("remove", item, options);
     },
     
     change: function(item, options) {
-    	var index = this.data.length;
-    	if(options) {
-    		index = options.at;
-    	}
-    	this.data.splice(index, 0, item);
+    	if(!options.at)
+          throw "Must specify the index of the element to change";
+        else
+          index = options.at; 
+    	this.data.splice(index, 1, item.options);
+    	this.$el.trigger("change", item, options);
     },
         
     map: function(func) {

@@ -31,8 +31,8 @@ define([
             Math.abs(mouseDownEvent.pageY - mouseMoveEvent.pageY) > 10
           ){
             that.$el.popover('destroy');
-            console.log(that.$el);
-            $("#build > form > fieldset").trigger("mySnippetDrag", [mouseDownEvent, that.model]);
+            $("#build > form > fieldset").trigger("mySnippetDrag", [mouseDownEvent, 
+                                                  that.model, {at: that.$el.index()}]);
             that.mouseUpHandler();
           };
         });

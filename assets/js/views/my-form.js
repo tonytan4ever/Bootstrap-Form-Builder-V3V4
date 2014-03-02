@@ -18,13 +18,13 @@ define([
       this.collection = options.collection;
     
       this.collection.on("add", $.proxy(this.render, this));
-      //this.collection.on("remove", $.proxy(this.render, this));
-      //this.collection.on("change", $.proxy(this.render, this));
+      this.collection.on("remove", $.proxy(this.render, this));
+      this.collection.on("change", $.proxy(this.render, this));
       
       this.$el = $("<fieldset/>")
       this.$build = $("#build");
       
-      //this.$el.on("mySnippetDrag", $.proxy(this.handleSnippetDrag, this));
+      this.$el.on("mySnippetDrag", $.proxy(this.handleSnippetDrag, this));
       this.$el.on("tempMove", $.proxy(this.handleTempMove, this));
       this.$el.on("tempDrop", $.proxy(this.handleTempDrop, this));
       
@@ -43,8 +43,7 @@ define([
         text: _.map(this.collection.renderAllClean(), function(e){return e.html()}).join("\n")
       }));
       
-      this.$el.appendTo("#build > form");
-      //this.delegateEvents(); 
+      this.$el.appendTo("#build > form"); 
     }, 
     
     getBottomAbove: function(eventY){
@@ -65,16 +64,19 @@ define([
       }
     }, 
     
-    handleSnippetDrag: function(mouseEvent, snippetModel) {
-      $("body").append(new TempSnippetView({model: snippetModel}).render());
-      this.collection.remove(snippetModel);
-      //PubSub.trigger("newTempPostRender", mouseEvent);
+    handleSnippetDrag: function(mySnippetDragEvent, mouseEvent, snippetModel, 
+       removalOption) {
+      var temp_snip = new TempSnippetView({model: snippetModel});
+      $("body").append(temp_snip.render());
+      this.collection.remove(snippetModel, removalOption);
+      temp_snip.$el.trigger("newTempPostRender", mouseEvent);
     }, 
     
     handleTempMove: function(tempMoveEvent, mouseEvent, widthOffset){
       $(".target").removeClass("target");
       if(mouseEvent.pageX >= this.$build.offset().left  &&
-          mouseEvent.pageX < (this.$build.width() + this.$build.position().left + widthOffset) &&
+          mouseEvent.pageX < (this.$build.width() + this.$build.position().left 
+                                                               + widthOffset) &&
           mouseEvent.pageY >= this.$build.position().top && 
           mouseEvent.pageY < (this.$build.height() + this.$build.position().top)
           ){
