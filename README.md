@@ -6,3 +6,5 @@ A bootstrap 3.0 form drag and drop builder, implemented in Jquery.  Based on:  h
 
 Avaialble Demo at:
 http://formbuilder.tdjangoy.webfactional.com/
+
+Test pull-request
