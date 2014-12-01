@@ -47,7 +47,7 @@ define([
     getBottomAbove: function(eventY){
       var myFormBits = $(this.$el.find(".component"));
       var topelement = _.find(myFormBits, function(renderedSnippet) {
-        if (($(renderedSnippet).position().top + $(renderedSnippet).height()) > eventY  - 90) {
+        if (($(renderedSnippet).offset().top + $(renderedSnippet).height()) > eventY  - 90) {
           return true;
         }
         else {
@@ -73,10 +73,10 @@ define([
     handleTempMove: function(tempMoveEvent, mouseEvent, widthOffset){
       $(".target").removeClass("target");
       if(mouseEvent.pageX >= this.$build.offset().left  &&
-          mouseEvent.pageX < (this.$build.width() + this.$build.position().left 
+          mouseEvent.pageX < (this.$build.width() + this.$build.offset().left 
                                                                + widthOffset) &&
-          mouseEvent.pageY >= this.$build.position().top && 
-          mouseEvent.pageY < (this.$build.height() + this.$build.position().top)
+          mouseEvent.pageY >= this.$build.offset().top && 
+          mouseEvent.pageY < (this.$build.height() + this.$build.offset().top)
           ){
         
         $(this.getBottomAbove(mouseEvent.pageY)).addClass("target");
