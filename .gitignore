@@ -1,0 +1,59 @@
+*.py[cod]
+.DS_Store
+
+# C extensions
+*.so
+
+# Packages
+*.egg
+*.eggs
+*.egg-info
+dist
+build
+eggs
+parts
+bin
+var
+sdist
+develop-eggs
+.installed.cfg
+lib
+lib64
+__pycache__
+
+# Installer logs
+pip-log.txt
+*.log
+
+# Unit test / coverage reports
+.coverage
+.tox
+nosetests.xml
+tests/cover
+tests/logs
+
+# Hypothesis
+.hypothesis/
+
+# Translations
+*.mo
+
+# Mr Developer
+.mr.developer.cfg
+.project
+.pydevproject
+venv
+docker_rsa*
+write_file
+.settings/*
+
+/Dockerfile
+/docker/*/secret.yml
+/docker/api/poppy.conf
+/.idea
+
+# patch files
+*.patch
+
+#testr files
+.testrepository/*
