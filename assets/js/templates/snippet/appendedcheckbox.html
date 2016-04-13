@@ -3,7 +3,7 @@
   <label class="col-sm-4 control-label" for="{{ id }}">{{ label }}</label>
   <div class="{{ inputwidth }}">
     <div class="input-group">
-      <input id="{{ id }}" name="{{ id }}" class="form-control {{ inputsize }}" type="text" placeholder="{{ placeholder }}" {{#requried}} required {{/requried}} />
+      <input id="{{ id }}" name="{{ id }}" class="form-control {{ inputsize }}" type="text" placeholder="{{ placeholder }}" {{#required}} required="true" {{/required}} {{^required}} {{/required}} />
       <span class="input-group-addon">
         <input type="checkbox" {{#checked}}checked="checked"{{/checked}} />
       </span>

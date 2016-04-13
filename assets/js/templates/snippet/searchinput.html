@@ -4,7 +4,7 @@
   <div class="{{ inputwidth }}">
   	<div class="input-group">
 	    <input id="{{ id }}" name="{{ id }}" data-i-search-input="true" data-autocomplete="true" data-autocomplete-url="" 
-	         type="text" placeholder="{{ placeholder }}" class="form-control {{ inputsize }} search-query" {{#requried}} required {{/requried}} />
+	         type="text" placeholder="{{ placeholder }}" class="form-control {{ inputsize }} search-query" {{#required}} required="true" {{/required}} {{^required}} {{/required}} />
 	    <span class="input-group-btn"><button class="btn btn-primary" type="submit">Search</button></span>
   	</div>
   	{{#helptext.length}} <span class="help-block">{{ helptext }}</span> {{/helptext.length}}

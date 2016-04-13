@@ -4,7 +4,7 @@
   <div class="{{ inputwidth }}">
     <div class="input-group">
       <span class="input-group-addon">{{ prepend }}</span>
-      <input id="{{ id }}" name="{{ id }}" class="form-control {{ inputsize }}" placeholder="{{ placeholder }}" type="text" {{#requried}} required {{/requried}} />
+      <input id="{{ id }}" name="{{ id }}" class="form-control {{ inputsize }}" placeholder="{{ placeholder }}" type="text" {{#required}} required="true" {{/required}} {{^required}} {{/required}} />
     </div>
     {{#helptext.length}} <span class="help-block">{{ helptext }}</span> {{/helptext.length}}
   </div>

@@ -6,7 +6,7 @@
       <span class="input-group-addon">
           <input type="checkbox" {{#checked}}checked="checked"{{/checked}} />
       </span>
-      <input id="{{ id }}" name="{{ id }}" class="form-control {{ inputsize }}" type="text" placeholder="{{ placeholder }}" {{#requried}} required {{/requried}} />
+      <input id="{{ id }}" name="{{ id }}" class="form-control {{ inputsize }}" type="text" placeholder="{{ placeholder }}" {{#required}} required="true" {{/required}} {{^required}} {{/required}} />
     </div>
     {{#helptext.length}} <span class="help-block">{{ helptext }}</span> {{/helptext.length}}
   </div>
