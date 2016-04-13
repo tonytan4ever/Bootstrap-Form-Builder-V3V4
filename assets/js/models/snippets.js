@@ -72,7 +72,7 @@ define([
     },
     
     setField: function(name, value) {
-      var fields = this.get("fields")
+      var fields = this.get("fields");
       fields[name]["value"] = value;
       this.set("fields", fields);
     }
