@@ -13,6 +13,8 @@ define([
       // class name is actually not needed
       this.clsname="MyFormView";
       
+      this.columns = options.columns || 1;
+      
       this.collection = options.collection;
     
       this.collection.on("add", $.proxy(this.render, this));
@@ -38,6 +40,8 @@ define([
         that.$el.append(snippet);
       });
       $("#render").html(that.renderForm({
+        // add number of columns config here
+        columns : _.range(this.columns),
         text: _.map(this.collection.renderAllClean(), function(e){return e.html()}).join("\n")
       }));
       

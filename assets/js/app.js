@@ -54,6 +54,7 @@ define([
 	     	     
 	    new MyFormView({
         	title: "Original", 
+        	columns: 1,
         	collection: new MyFormSnippetsCollection([
 		          { "title" : "Form Name", 
 		            "fields": {
