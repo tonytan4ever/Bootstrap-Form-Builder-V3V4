@@ -32,19 +32,21 @@ define([
       this.render();
     }, 
     
-    render: function(layout_number_of_columns){
-      // handle columnizing logic here.
+    setLayoutNumberOfColumns: function(layout_number_of_columns) {
       this.columns = layout_number_of_columns;
+    },
+    
+    render: function(){
     
       //Render Snippet Views
       this.$el.empty();
       var that = this;
+      
       _.each(this.collection.renderAll(), function(snippet){
         that.$el.append(snippet);
       });
+      
       $("#render").html(that.renderForm({
-        // add number of columns config here
-        columns : _.range(this.columns),
         text: _.map(this.collection.renderAllClean(), function(e){return e.html()}).join("\n")
       }));
       
