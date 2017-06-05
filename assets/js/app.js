@@ -50,11 +50,12 @@ define([
     	//Make the first tab active!
 	    $("#components .tab-pane").first().addClass("active");
 	    $("#formtabs li").first().addClass("active");
-	     
+	    
+	    var layout_number_of_columns = 1;
 	     	     
-	    new MyFormView({
+	    myform_view = new MyFormView({
         	title: "Original", 
-        	columns: 1,
+        	columns: layout_number_of_columns,
         	collection: new MyFormSnippetsCollection([
 		          { "title" : "Form Name", 
 		            "fields": {
@@ -66,6 +67,15 @@ define([
 		            }
 		          }
 		        ])
+		});
+		
+		//Deal with the layout column selector
+	    $('#form-layout li').on('click', function(){
+	    
+	    	var output_tpl = _.template("Form Layout: <%= number %> column(s)");	    
+		    $('#form-layout-text').val(output_tpl({number: $(this).attr("value")}));
+		    layout_number_of_columns = $(this).attr("value");
+		    myform_view.render(layout_number_of_columns)
 		});
   	}
  }

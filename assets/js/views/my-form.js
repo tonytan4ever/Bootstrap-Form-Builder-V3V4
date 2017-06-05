@@ -32,7 +32,10 @@ define([
       this.render();
     }, 
     
-    render: function(){
+    render: function(layout_number_of_columns){
+      // handle columnizing logic here.
+      this.columns = layout_number_of_columns;
+    
       //Render Snippet Views
       this.$el.empty();
       var that = this;
