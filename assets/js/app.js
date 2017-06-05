@@ -75,7 +75,8 @@ define([
 	    	var output_tpl = _.template("Form Layout: <%= number %> column(s)");	    
 		    $('#form-layout-text').val(output_tpl({number: $(this).attr("value")}));
 		    layout_number_of_columns = $(this).attr("value");
-		    myform_view.render(layout_number_of_columns)
+		    myform_view.setLayoutNumberOfColumns(layout_number_of_columns);
+		    myform_view.render()
 		});
   	}
  }

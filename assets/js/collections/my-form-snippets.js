@@ -12,6 +12,9 @@ define([
   return SnippetsCollection.extend({
     model: SnippetModel, 
     
+    
+    // TODO:  Add form div columnized logic according to
+    // https://stackoverflow.com/questions/18428871/multi-column-forms-with-fieldsets
     renderAll: function(){
       var that = this;
       return this.map(function(snippet){
