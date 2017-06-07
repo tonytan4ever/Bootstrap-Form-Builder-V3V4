@@ -10,7 +10,12 @@ define([
   MyFormSnippetView
 ){
   return SnippetsCollection.extend({
-    model: SnippetModel, 
+    model: SnippetModel,
+    component_width: null, 
+    
+    setEachComponentWidth: function(component_width) {
+      this.component_width = component_width;
+    }, 
     
     
     // TODO:  Add form div columnized logic according to
@@ -20,6 +25,7 @@ define([
       return this.map(function(snippet){
         return new MyFormSnippetView({model: new SnippetModel(snippet),
                                       parentModel: that,
+                                      component_width: that.component_width 
                                       }).render(true);
       })
     }, 
@@ -29,6 +35,7 @@ define([
       return this.map(function(snippet){
         return new MyFormSnippetView({model: new SnippetModel(snippet),
         						      parentModel: that,
+        						      component_width: that.component_width
         						     }).render(false);
       });
     }

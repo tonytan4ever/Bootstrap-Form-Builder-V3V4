@@ -46,6 +46,12 @@ define([
         that.$el.append(snippet);
       });
       
+      if(this.columns == 2) {
+      	this.collection.setEachComponentWidth("col-sm-6");
+      } else {
+      	this.collection.setEachComponentWidth(null);
+      }
+      
       $("#render").html(that.renderForm({
         text: _.map(this.collection.renderAllClean(), function(e){return e.html()}).join("\n")
       }));
