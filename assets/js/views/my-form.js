@@ -17,6 +17,7 @@ define([
       
       this.collection = options.collection;
     
+      //(TODO:) modify on add to render in more sizable way
       this.collection.on("add", $.proxy(this.render, this));
       this.collection.on("remove", $.proxy(this.render, this));
       this.collection.on("change", $.proxy(this.render, this));

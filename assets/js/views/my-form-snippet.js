@@ -26,7 +26,8 @@ define([
       mouseDownEvent.preventDefault();
       var that = this;
       //popover
-      $(".popover").remove();
+      $(".popover").remove();    
+      //(TODO:) modify the show position of the popover
       this.$el.popover("show");
       $(".popover #save").on("click", this.saveHandler(that));
       $(".popover #cancel").on("click", this.cancelHandler(that));
