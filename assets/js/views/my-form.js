@@ -33,6 +33,9 @@ define([
     }, 
     
     setLayoutNumberOfColumns: function(layout_number_of_columns) {
+      // reset the elements in your form if the layout has changed.
+      if(this.columns != layout_number_of_columns)
+      	this.collection.data = _.initial(this.collection.data, this.collection.data.length-1);
       this.columns = layout_number_of_columns;
     },
     

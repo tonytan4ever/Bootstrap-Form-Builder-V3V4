@@ -35,13 +35,11 @@ define([
 	    		this.$el.bind(key, $.proxy(this[this.events[key]],this));
       		}, this)
       	);
-      
-      // TODO: fix Mustache render errors after
+
       var template_str = _snippetTemplates[this.model.idFriendlyTitle()];
-      if(this.component_width && this.model != 'formname'){
-      	var $html = $("<div class="+ this.component_width + "/>");
-      	$html.html(template_str);
-      	template_str = $html.prop("outerHTML");
+      if(this.component_width && this.model.idFriendlyTitle() != 'formname'){
+      	var outter_div_template = "<div class="+ this.component_width + ">{{{inner_html}}}</div>";
+      	template_str = Mustache.to_html(outter_div_template, { inner_html:template_str  });
       }
       this.template = _.partial(Mustache.to_html, template_str);
 
@@ -68,7 +66,6 @@ define([
         "compiled" :  popover_form_text
       });
       
-     
       var template_context = that.model.getValues();
 
       if (withAttributes) {
