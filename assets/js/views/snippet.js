@@ -38,6 +38,8 @@ define([
 
       var template_str = _snippetTemplates[this.model.idFriendlyTitle()];
       if(this.component_width && this.model.idFriendlyTitle() != 'formname'){
+      	this.$el.addClass(this.component_width);
+      
       	var outter_div_template = "<div class="+ this.component_width + ">{{{inner_html}}}</div>";
       	template_str = Mustache.to_html(outter_div_template, { inner_html:template_str  });
       }
@@ -69,14 +71,19 @@ define([
       var template_context = that.model.getValues();
 
       if (withAttributes) {
-        return this.$el.html(
+        return_el =  this.$el.html(
           that.template(template_context)
         ).attr({
           "data-content"   : content, 
           "data-title"     : that.model.get("title"), 
           "data-trigger"   : "manual", 
-          "data-html"      : true
+          "data-html"      : true,
         });
+        
+        if(this.component_width)
+        	return_el.children().first().removeClass(this.component_width);
+        
+        return return_el;
       } else {
         return this.$el.html(
           that.template(template_context)
