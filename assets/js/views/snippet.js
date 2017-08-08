@@ -26,8 +26,10 @@ define([
       if("model" in options){
       	this.model = options.model;
       }
-      
+
       this.component_width = options.component_width;
+      this.columns = options.columns;
+      this.index = options.index; 
       
       this.$el = $('<div/>').addClass("component");
       if(this.events != null)
@@ -80,9 +82,12 @@ define([
           "data-html"      : true,
         });
         
-        if(this.component_width)
-        	return_el.children().first().removeClass(this.component_width);
-        
+        if(this.columns > 1 && this.model.idFriendlyTitle() != 'formname'){
+        	var temp_return_el = return_el;
+        	return_el = $('<div class="row"/>');
+        	return_el.append(temp_return_el);
+        	return_el.children().children().first().removeClass(this.component_width);
+        }
         return return_el;
       } else {
         return this.$el.html(

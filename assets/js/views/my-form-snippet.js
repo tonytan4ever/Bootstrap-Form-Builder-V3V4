@@ -26,7 +26,7 @@ define([
       mouseDownEvent.preventDefault();
       var that = this;
       //popover
-      $(".popover").remove();    
+      $(".popover").remove();
       this.$el.popover("show");
       $(".popover #save").on("click", this.saveHandler(that));
       $(".popover #cancel").on("click", this.cancelHandler(that));

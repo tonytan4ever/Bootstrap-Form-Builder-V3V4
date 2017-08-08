@@ -51,9 +51,9 @@ define([
       });
       
       if(this.columns == 2) {
-      	this.collection.setEachComponentWidth("col-sm-6");
+      	this.collection.setEachComponentWidth("col-sm-6", this.columns);
       } else {
-      	this.collection.setEachComponentWidth(null);
+      	this.collection.setEachComponentWidth(null, this.column);
       }
       
       $("#render").html(that.renderForm({
@@ -98,7 +98,10 @@ define([
           mouseEvent.pageY < (this.$build.height() + this.$build.offset().top)
           ){
         
-        $(this.getBottomAbove(mouseEvent.pageY)).addClass("target");
+        // TODO: Add drop target logic
+        //if (this.columns > 1 &&)
+        //else
+        	$(this.getBottomAbove(mouseEvent.pageY)).addClass("target");
       } else {
         $(".target").removeClass("target");
       }
