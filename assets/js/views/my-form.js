@@ -97,11 +97,14 @@ define([
           mouseEvent.pageY >= this.$build.offset().top && 
           mouseEvent.pageY < (this.$build.height() + this.$build.offset().top)
           ){
-        
-        // TODO: Add drop target logic
-        //if (this.columns > 1 &&)
-        //else
-        	$(this.getBottomAbove(mouseEvent.pageY)).addClass("target");
+        	var bottom_above_element = this.getBottomAbove(mouseEvent.pageY);
+        	console.log($(bottom_above_element).attr("data-title"));
+        	$(bottom_above_element).addClass("target")
+        	if(this.columns > 1){
+        		$(bottom_above_element).addClass("columns-"+this.columns);
+        	}
+        	
+        // $(bottom_above_element).css({'float':'left'});
       } else {
         $(".target").removeClass("target");
       }

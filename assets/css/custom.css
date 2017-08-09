@@ -98,6 +98,16 @@ form .popover form {
   border: 1px dashed #ccc;
 }
 
+.target.columns-2:after{
+  float:right;
+  content: " ";
+  height: 77px;
+  margin-top: 3px;
+  background: #f0f0f0;
+  width: 50%;
+  border: 1px dashed #ccc;
+}
+
 #target, #input, #radioscheckboxes, #select, #buttons {
  -webkit-touch-callout: none;
  -webkit-user-select: none;
