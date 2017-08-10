@@ -98,8 +98,8 @@ form .popover form {
   border: 1px dashed #ccc;
 }
 
-.target.columns-2:after{
-  float:right;
+.target.head-insert:after{
+  float:left;
   content: " ";
   height: 77px;
   margin-top: 3px;

@@ -63,6 +63,10 @@ define([
       this.$el.appendTo("#build > form"); 
     }, 
     
+    buildNextComponent: function() {
+    	return $("<div id='temp_drop_target' class='component col-sm-6 target'></div>")
+    },
+    
     getBottomAbove: function(eventY){
       var myFormBits = $(this.$el.find(".component"));
       var topelement = _.find(myFormBits, function(renderedSnippet) {
@@ -98,13 +102,37 @@ define([
           mouseEvent.pageY < (this.$build.height() + this.$build.offset().top)
           ){
         	var bottom_above_element = this.getBottomAbove(mouseEvent.pageY);
-        	console.log($(bottom_above_element).attr("data-title"));
-        	$(bottom_above_element).addClass("target")
+        	var data_title_attr = $(bottom_above_element).attr("data-title");
+ 
+			// handle multi-columns target rendering
+			$(bottom_above_element).addClass("target");
         	if(this.columns > 1){
-        		$(bottom_above_element).addClass("columns-"+this.columns);
+        		// remove ppossible previous drop target.
+        		if($("div#temp_drop_target").length)
+						$("div#temp_drop_target").remove()
+        	
+        		if(data_title_attr == 'Form Name'){
+        			$(bottom_above_element).addClass("head-insert");
+        		} else {
+        			$(".head-insert").removeClass("head-insert");
+        		}
+        		
+        		if(mouseEvent.pageX >= this.$build.width()/this.columns + this.$build.offset().left + widthOffset){			
+					$(bottom_above_element).removeClass('target');
+					
+					if($(bottom_above_element).next().is('.component'))
+						bottom_above_element = $(bottom_above_element).next();
+	
+					this.buildNextComponent().insertAfter(bottom_above_element);
+        		}
+        		
+        		if($(bottom_above_element).is(':last-child') &&
+        		    !$(bottom_above_element).is("div#temp_drop_target") ){
+        			$(bottom_above_element).removeClass('target');
+					this.buildNextComponent().insertAfter(bottom_above_element);
+        		}
         	}
         	
-        // $(bottom_above_element).css({'float':'left'});
       } else {
         $(".target").removeClass("target");
       }
@@ -113,11 +141,17 @@ define([
     handleTempDrop: function(tempDropEvent, mouseEvent, model, widthOffset, index){
       if($(".target").length) {
         var index = $(".target").index();
-        $(".target").removeClass("target");
+        // adjust insert position for multiple columns
+        // index++ may be problematic for more than 2 columns
+        if(index % 2==1 && this.columns>1)
+        	index++;
+        
         this.collection.add(model,{at: index+1});
-      } else {
-        $(".target").removeClass("target");
-      }
+      } 
+      
+      $(".target").removeClass("target");
+      $(".head-insert").removeClass("head-insert");
+      $("div#temp_drop_target").remove()
     }
   })
 });
