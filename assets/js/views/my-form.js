@@ -117,11 +117,13 @@ define([
         			$(".head-insert").removeClass("head-insert");
         		}
         		
+        		// todo: Y coordinate for same row insert        		
         		if(mouseEvent.pageX >= this.$build.width()/this.columns + this.$build.offset().left + widthOffset){			
 					$(bottom_above_element).removeClass('target');
 					
-					if($(bottom_above_element).next().is('.component'))
+					if($(bottom_above_element).next().is('.component')){
 						bottom_above_element = $(bottom_above_element).next();
+					}
 	
 					this.buildNextComponent().insertAfter(bottom_above_element);
         		}
