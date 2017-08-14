@@ -108,6 +108,24 @@ form .popover form {
   border: 1px dashed #ccc;
 }
 
+#temp_drop_target{
+  background: #f0f0f0;
+  border: 1px dashed #ccc;
+}
+
+.wg-target {
+  background-color: transparent;
+  border: 0px solid;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+input.wg-target:focus{
+    border-color: inherit;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
 #target, #input, #radioscheckboxes, #select, #buttons {
  -webkit-touch-callout: none;
  -webkit-user-select: none;

@@ -15,3 +15,10 @@ to Run the Demo locally::
   
 For more detail on Flask, see: http://flask.pocoo.org/
 
+
+### New on 2017-08-14
+
+Added in two-column layout support. TODO/Limitations: now the two widgets in the same row have to
+be of the same height.
+
+

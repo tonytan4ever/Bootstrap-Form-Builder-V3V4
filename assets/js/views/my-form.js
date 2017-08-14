@@ -63,8 +63,25 @@ define([
       this.$el.appendTo("#build > form"); 
     }, 
     
-    buildNextComponent: function() {
-    	return $("<div id='temp_drop_target' class='component col-sm-6 target'></div>")
+    buildSamelineDropTarget: function(el) {
+    	var ret_val = el.clone().prop("id", "temp_drop_target");
+    	ret_val.find("label").text("");
+    	ret_val.find("div.col-sm-6").children().each(function(){
+    		if(!$(this).is('span.help-block'))
+    			$(this).remove()
+    	})
+    	ret_val.find("div.col-sm-6").append($(
+			'<input name="textinput" type="text" class="form-control input-md wg-target">'    	
+    	))
+    	ret_val.find("span.help-block").html("&nbsp&nbsp");
+    	return ret_val;
+    },
+    
+    getInsertAfterEl: function(el) {
+        if($(el).attr("data-title") == 'Form Name')
+			return $(el).next();
+		else
+			return $(el).next().next()
     },
     
     getBottomAbove: function(eventY){
@@ -121,17 +138,8 @@ define([
         		if(mouseEvent.pageX >= this.$build.width()/this.columns + this.$build.offset().left + widthOffset){			
 					$(bottom_above_element).removeClass('target');
 					
-					if($(bottom_above_element).next().is('.component')){
-						bottom_above_element = $(bottom_above_element).next();
-					}
-	
-					this.buildNextComponent().insertAfter(bottom_above_element);
-        		}
-        		
-        		if($(bottom_above_element).is(':last-child') &&
-        		    !$(bottom_above_element).is("div#temp_drop_target") ){
-        			$(bottom_above_element).removeClass('target');
-					this.buildNextComponent().insertAfter(bottom_above_element);
+					var insert_after_el = this.getInsertAfterEl(bottom_above_element);
+					this.buildSamelineDropTarget(insert_after_el).insertAfter(insert_after_el);
         		}
         	}
         	
@@ -141,13 +149,16 @@ define([
     }, 
     
     handleTempDrop: function(tempDropEvent, mouseEvent, model, widthOffset, index){
-      if($(".target").length) {
-        var index = $(".target").index();
+      if($(".target").length || $("#temp_drop_target").length) {
+      	if($(".target").length)
+        	var index = $(".target").index() 
+        else
+            var index =  $('#temp_drop_target').index();
         // adjust insert position for multiple columns
         // index++ may be problematic for more than 2 columns
         if(index % 2==1 && this.columns>1)
         	index++;
-        
+
         this.collection.add(model,{at: index+1});
       } 
       
