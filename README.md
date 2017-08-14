@@ -1,4 +1,4 @@
-Bootstrap-Form-Builder-JV3
+Bootstrap-Form-Builder-V3V4
 ==========================
 
 A bootstrap 3.0 form drag and drop builder, implemented in Jquery.  Based on:  https://github.com/minikomi/Bootstrap-Form-Builder
@@ -16,9 +16,12 @@ to Run the Demo locally::
 For more detail on Flask, see: http://flask.pocoo.org/
 
 
-### New development on 2017-08-11
+### New development on 2017-08-14
 
-Added in two-column layout support. Limitations: you can only drop in the first column except
-the first and last row. The limitation is due to the dropping target of the 2nd column: it only
+Added in two-column layout support. TODO/Limitations: The two widgets in the same row have to be in
+the same height (otherwise you will see misalign-ment). We are actively working to fix it.
+
+
+### Project Plan: Support for Bootstrap V4
 
 
