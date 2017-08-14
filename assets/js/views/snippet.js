@@ -26,17 +26,27 @@ define([
       if("model" in options){
       	this.model = options.model;
       }
+
+      this.component_width = options.component_width;
+      this.columns = options.columns;
+      this.index = options.index; 
       
       this.$el = $('<div/>').addClass("component");
       if(this.events != null)
       	_.each(this.events, $.proxy(function(val, key) {
-	    		//console.log($.proxy(this[this.events[key]],this));
 	    		this.$el.bind(key, $.proxy(this[this.events[key]],this));
       		}, this)
       	);
+
+      var template_str = _snippetTemplates[this.model.idFriendlyTitle()];
+      if(this.component_width && this.model.idFriendlyTitle() != 'formname'){
+      	this.$el.addClass(this.component_width);
       
-      this.template = _.partial(Mustache.to_html,
-                               _snippetTemplates[this.model.idFriendlyTitle()]);
+      	var outter_div_template = "<div class="+ this.component_width + ">{{{inner_html}}}</div>";
+      	template_str = Mustache.to_html(outter_div_template, { inner_html:template_str  });
+      }
+      this.template = _.partial(Mustache.to_html, template_str);
+
       this.popoverTemplates = {
         "input" : _.partial(Mustache.to_html,_PopoverInput),
         "select" : _.partial(Mustache.to_html,_PopoverSelect),
@@ -60,18 +70,28 @@ define([
         "compiled" :  popover_form_text
       });
       
+      var template_context = that.model.getValues();
+
       if (withAttributes) {
-        return this.$el.html(
-          that.template(that.model.getValues())
+        return_el =  this.$el.html(
+          that.template(template_context)
         ).attr({
           "data-content"   : content, 
           "data-title"     : that.model.get("title"), 
           "data-trigger"   : "manual", 
-          "data-html"      : true
+          "data-html"      : true,
         });
+        
+        if(this.columns > 1 && this.model.idFriendlyTitle() != 'formname'){
+        //	var temp_return_el = return_el;
+        // 	return_el = $('<div class="row"/>');
+        //	return_el.append(temp_return_el);
+        	return_el.children().first().removeClass(this.component_width);
+        }
+        return return_el;
       } else {
         return this.$el.html(
-          that.template(that.model.getValues())
+          that.template(template_context)
         );
       }
     }

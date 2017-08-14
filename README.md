@@ -15,3 +15,10 @@ to Run the Demo locally::
   
 For more detail on Flask, see: http://flask.pocoo.org/
 
+
+### New development on 2017-08-11
+
+Added in two-column layout support. Limitations: you can only drop in the first column except
+the first and last row. The limitation is due to the dropping target of the 2nd column: it only
+
+

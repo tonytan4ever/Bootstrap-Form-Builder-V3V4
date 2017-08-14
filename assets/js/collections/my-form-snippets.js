@@ -10,13 +10,21 @@ define([
   MyFormSnippetView
 ){
   return SnippetsCollection.extend({
-    model: SnippetModel, 
+    model: SnippetModel,
+    component_width: null, 
+    
+    setEachComponentWidth: function(component_width, columns) {
+      this.component_width = component_width;
+      this.columns = columns;
+    }, 
     
     renderAll: function(){
       var that = this;
-      return this.map(function(snippet){
+      return this.map(function(snippet, index){
         return new MyFormSnippetView({model: new SnippetModel(snippet),
                                       parentModel: that,
+                                      component_width: that.component_width,
+                                      columns: that.columns
                                       }).render(true);
       })
     }, 
@@ -26,6 +34,8 @@ define([
       return this.map(function(snippet){
         return new MyFormSnippetView({model: new SnippetModel(snippet),
         						      parentModel: that,
+        						      component_width: that.component_width,
+        						      columns: that.columns
         						     }).render(false);
       });
     }
