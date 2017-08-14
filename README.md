@@ -18,8 +18,11 @@ For more detail on Flask, see: http://flask.pocoo.org/
 
 ### New development on 2017-08-14
 
-Added in two-column layout support. TODO/Limitations: The two widgets in the same row have to be in
-the same height (otherwise you will see misalign-ment). We are actively working to fix it.
+Added in two-column layout support. 
+
+TODO/Limitations:
+  * Now only support two columns layout
+  * The two widgets in the same row have to be of the same height (otherwise you will see misalign-ment). We are actively working to fix it.
 
 
 ### Project Plan: Support for Bootstrap V4
