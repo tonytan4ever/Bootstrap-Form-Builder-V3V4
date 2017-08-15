@@ -18,7 +18,7 @@ For more detail on Flask, see: http://flask.pocoo.org/
 
 ### New development on 2017-08-14
 
-Added in two-column layout support. 
+Added in two-column layout support. Click 'Select Form Layout' to choose 2-column form layout.
 
 TODO/Limitations:
   * Now only support two columns layout
