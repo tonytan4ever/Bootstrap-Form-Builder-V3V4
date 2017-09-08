@@ -18,12 +18,18 @@ require.config({
     'underscore': {
 	      exports: '_'
 	},
-
+	
     'bootstrap': {
       deps: ['jquery', 'Tether'],
       exports: '$.fn.popover'
-    }
+    },
+    
   }
+});
+
+
+require(['Tether'], function (Tether) {
+    window.Tether = Tether;
 });
 
 require(['app/app'], function(app){

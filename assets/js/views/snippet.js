@@ -1,7 +1,3 @@
-require(['Tether'], function (Tether) {
-    window.Tether = Tether;
-});
-
 define([
   "jquery", "mustache", "underscore", "class", 
   "text!templates/popover/popover-main.html", 
