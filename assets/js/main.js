@@ -3,7 +3,7 @@ require.config({
   paths: {
 	'jquery': 'http://code.jquery.com/jquery-3.1.1',
 	'mustache' : "http://rawgithub.com/janl/mustache.js/master/mustache",
-	'tether' : "https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether",
+	'Tether' : "https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether",
 	'bootstrap' : "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap",
 	'underscore' :  "https://rawgithub.com/jashkenas/underscore/master/underscore",
 	'text'  : "https://rawgithub.com/requirejs/text/latest/text",
@@ -20,7 +20,7 @@ require.config({
 	},
 
     'bootstrap': {
-      deps: ['jquery', 'tether'],
+      deps: ['jquery', 'Tether'],
       exports: '$.fn.popover'
     }
   }
