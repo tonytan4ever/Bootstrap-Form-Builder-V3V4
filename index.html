@@ -22,21 +22,16 @@
 
   <body>
   	<a href="https://github.com/tonytan4ever/Bootstrap-Form-Builder-V3V4"><img style="z-index: 100000; position: absolute; top: 0; right: 0; border: 0;" src="https://github-camo.global.ssl.fastly.net/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <nav class="navbar fixed-top navbar-light bg-light" role="navigation">
       <div class="container">
-      	<div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <button type="button" class="navbar-toggler" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="#">Bootstrap Form Builder V3.x and V4</a>
-        </div>
-        <ul class="nav navbar-brand navbar-right github">
-	        <li><iframe src="http://ghbtns.com/github-btn.html?user=tonytan4ever&type=follow"
-	  	allowtransparency="true" frameborder="0" scrolling="0" width="143px" height="20px"></iframe></li>
-	  	</ul>
+          <ul class="nav navbar-brand navbar-right github">
+              <li><iframe src="http://ghbtns.com/github-btn.html?user=tonytan4ever&type=follow"
+          allowtransparency="true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe></li>
+          </ul>
       </div>
     </nav>
     <div class="container">
@@ -47,13 +42,13 @@
             <h2>Your Form</h2>
             <div class="input-group">
                 <div class="input-group-btn">
-				    <button type="button" class="form-control btn btn-default dropdown-toggle" data-toggle="dropdown">
-				        Select Form Layout <span class="caret"></span>
+				    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				        Form Layout
 				    </button>
-				    <ul class="dropdown-menu" id="form-layout" role="menu">
-				        <li value=1><a href="#">1 Column</a></li>
-				        <li value=2><a href="#">2 Columns</a></li>
-				    </ul>
+				    <div class="dropdown-menu" id="form-layout" role="menu">
+				        <li class="dropdown-item" value=1><a href="#">1 Column</a></li>
+				        <li class="dropdown-item" value=2><a href="#">2 Columns</a></li>
+				    </div>
 				</div>
 				<input id="form-layout-text" class="form-control input-md" placeholder="Form Layout: 1 column(s)" type="text" readonly>
 			</div>
@@ -71,7 +66,7 @@
           <h2>Drag & Drop components</h2>
           <hr>
           <div class="tabbable">
-            <ul class="nav nav-tabs" id="formtabs">
+            <ul class="nav nav-tabs nav-fill" id="formtabs">
               <!-- Tab nav -->
             </ul>
             <form class="form-horizontal" id="components">
