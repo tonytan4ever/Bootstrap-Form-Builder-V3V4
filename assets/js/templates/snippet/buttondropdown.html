@@ -1,21 +1,18 @@
 <!-- Button Drop Down -->
 <div class="form-group">
-  <label class="col-sm-4 control-label" for="{{ id }}">{{ label }}</label>
-  <div class="{{ inputwidth }}">
+  <label class="control-label" for="{{ id }}">{{ label }}</label>
     <div class="input-group">
       <input id="{{ id }}" name="{{ id }}" class="form-control {{ inputsize }}" placeholder="{{ placeholder }}" type="text" {{#required}} required="true" {{/required}} {{^required}} {{/required}} />
-      <div class="input-group-btn">
-        <button class="btn dropdown-toggle" data-toggle="dropdown">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown">
           {{ buttontext }}
-          <span class="caret"></span>
         </button>
-        <ul class="dropdown-menu pull-right">
+        <div class="dropdown-menu pull-right">
           {{#buttonoptions}}
-          <li><a href="#">{{ . }}</a></li>
+          <a class="dropdown-item" href="#">{{ . }}</a>
           {{/buttonoptions}}
-        </ul>
+        </div>
       </div>
     </div>
     {{#helptext.length}} <span class="help-block">{{ helptext }}</span> {{/helptext.length}}
-  </div>
 </div>
