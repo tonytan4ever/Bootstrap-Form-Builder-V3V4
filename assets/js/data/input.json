@@ -459,17 +459,17 @@
         "value": [
           {
             "label": "Small",
-            "value": "form-control-sm",
+            "value": "input-group-sm",
             "selected": false
           },
           {
             "label": "Medium",
-            "value": "form-control-md",
+            "value": "input-group-md",
             "selected": true
           },
           {
             "label": "Large",
-            "value": "form-control-lg",
+            "value": "input-group-lg",
             "selected": false
           }
         ]

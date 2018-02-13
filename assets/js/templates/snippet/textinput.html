@@ -2,5 +2,5 @@
 <div class="form-group">
   <label class="custom-control-label" for="{{ id }}">{{ label }}</label>
   <input id="{{ id }}" name="{{ id }}" type="text" placeholder="{{ placeholder }}" class="form-control {{ inputsize }}" {{#required}} required="true" {{/required}} {{^required}} {{/required}} />
-    {{#helptext.length}} <span class="help-block">{{ helptext }}</span> {{/helptext.length}}
+    {{#helptext.length}} <span class="form-text text-muted">{{ helptext }}</span> {{/helptext.length}}
 </div>
