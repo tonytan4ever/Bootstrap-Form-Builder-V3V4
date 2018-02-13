@@ -12,17 +12,17 @@
         "value": [
           {
             "label": "Small",
-            "value": "input-sm",
+            "value": "form-control-sm",
             "selected": false
           },
           {
             "label": "Medium",
-            "value": "input-md",
+            "value": "form-control-md",
             "selected": true
           },
           {
             "label": "Large",
-            "value": "input-lg",
+            "value": "form-control-lg",
             "selected": false
           }
         ]
