@@ -1,7 +1,7 @@
 define([
-       "jquery", "mustache", "underscore", "class",
-       "views/temp-snippet",
-       "text!templates/app/renderform.html"
+  "jquery", "mustache", "underscore", "class",
+  "views/temp-snippet",
+  "text!templates/app/renderform.html"
 ], function(
   $, Mustache, _, Class,
   TempSnippetView,
@@ -36,7 +36,7 @@ define([
     setLayoutNumberOfColumns: function(layout_number_of_columns) {
       // reset the elements in your form if the layout has changed.
       if(this.columns != layout_number_of_columns)
-      	this.collection.data = _.initial(this.collection.data, this.collection.data.length-1);
+      this.collection.data = _.initial(this.collection.data, this.collection.data.length-1);
       this.columns = layout_number_of_columns;
     },
 
@@ -51,9 +51,9 @@ define([
       });
 
       if(this.columns == 2) {
-      	this.collection.setEachComponentWidth("col-sm-6", this.columns);
+        this.collection.setEachComponentWidth("col-sm-6", this.columns);
       } else {
-      	this.collection.setEachComponentWidth(null, this.column);
+        this.collection.setEachComponentWidth(null, this.column);
       }
 
       $("#render").html(that.renderForm({
@@ -64,25 +64,25 @@ define([
     },
 
     buildSamelineDropTarget: function(el) {
-    	var ret_val = el.clone().prop("id", "temp_drop_target");
-    	console.log("same line drop target " + ret_val);
-    	ret_val.find("label").text("");
-    	ret_val.find("div.col-sm-6").children().each(function(){
-    		if(!$(this).is('span.help-block'))
-    			$(this).remove()
-    	})
-    	ret_val.find("div.col-sm-6").append($(
-			'<input name="textinput" type="text" class="form-control-md wg-target">'
-    	))
-    	ret_val.find("span.help-block").html("&nbsp&nbsp");
-    	return ret_val;
+      var ret_val = el.clone().prop("id", "temp_drop_target");
+      ret_val.find("label").text("");
+      ret_val.find("div.col-sm-6").children().each(function() {
+        if(!$(this).is('span.form-text')) {
+          $(this).remove();
+        }
+      });
+      ret_val.find("div.col-sm-6").append($(
+        '<input name="textinput" type="text" class="form-control-md wg-target">'
+      ));
+      ret_val.find("span.form-text").html("&nbsp&nbsp");
+      return ret_val;
     },
 
     getInsertAfterEl: function(el) {
-        if($(el).attr("data-title") == 'Form Name')
-			return $(el).next();
-		else
-			return $(el).next().next()
+      if($(el).attr("data-title") == 'Form Name')
+        return $(el).next();
+      else
+        return $(el).next().next()
     },
 
     getBottomAbove: function(eventY){
@@ -103,46 +103,46 @@ define([
       }
     },
 
-    handleSnippetDrag: function(mySnippetDragEvent, mouseEvent, snippetModel,
-       removalOption) {
-      var temp_snip = new TempSnippetView({model: snippetModel});
-      $("body").append(temp_snip.render());
-      this.collection.remove(snippetModel, removalOption);
-      temp_snip.$el.trigger("newTempPostRender", mouseEvent);
-    },
+    handleSnippetDrag: function(mySnippetDragEvent, mouseEvent, snippetModel, removalOption) {
+        var temp_snip = new TempSnippetView({model: snippetModel});
+        $("body").append(temp_snip.render());
+        this.collection.remove(snippetModel, removalOption);
+        temp_snip.$el.trigger("newTempPostRender", mouseEvent);
+      },
 
-    handleTempMove: function(tempMoveEvent, mouseEvent, widthOffset){
-      $(".target").removeClass("target");
-      if(mouseEvent.pageX >= this.$build.offset().left  &&
-          mouseEvent.pageX < (this.$build.width() + this.$build.offset().left
-                                                               + widthOffset) &&
-          mouseEvent.pageY >= this.$build.offset().top &&
-          mouseEvent.pageY < (this.$build.height() + this.$build.offset().top)
-          ){
-        	var bottom_above_element = this.getBottomAbove(mouseEvent.pageY);
-        	var data_title_attr = $(bottom_above_element).attr("data-title");
+      handleTempMove: function(tempMoveEvent, mouseEvent, widthOffset){
+        $(".target").removeClass("target");
+        if(mouseEvent.pageX >= this.$build.offset().left  &&
+        mouseEvent.pageX < (this.$build.width() + this.$build.offset().left
+        + widthOffset) &&
+        mouseEvent.pageY >= this.$build.offset().top &&
+        mouseEvent.pageY < (this.$build.height() + this.$build.offset().top)
+      ){
+        var bottom_above_element = this.getBottomAbove(mouseEvent.pageY);
+        var data_title_attr = $(bottom_above_element).attr("data-title");
 
-			// handle multi-columns target rendering
-			$(bottom_above_element).addClass("target");
-        	if(this.columns > 1){
-        		// remove possible previous drop target.
-        		if($("div#temp_drop_target").length)
-						$("div#temp_drop_target").remove()
+        // handle multi-columns target rendering
+        $(bottom_above_element).addClass("target");
+        if(this.columns > 1){
+          // remove possible previous drop target.
+          if($("div#temp_drop_target").length) {
+            $("div#temp_drop_target").remove();
+          }
 
-        		if(data_title_attr == 'Form Name'){
-        			$(bottom_above_element).addClass("head-insert");
-        		} else {
-        			$(".head-insert").removeClass("head-insert");
-        		}
+          if(data_title_attr == 'Form Name'){
+            $(bottom_above_element).addClass("head-insert");
+          } else {
+            $(".head-insert").removeClass("head-insert");
+          }
 
-        		// todo: Y coordinate for same row insert
-        		if(mouseEvent.pageX >= this.$build.width()/this.columns + this.$build.offset().left + widthOffset){
-					$(bottom_above_element).removeClass('target');
+          // TODO: Y coordinate for same row insert
+          if(mouseEvent.pageX >= this.$build.width()/this.columns + this.$build.offset().left + widthOffset){
+            $(bottom_above_element).removeClass('target');
 
-					var insert_after_el = this.getInsertAfterEl(bottom_above_element);
-					this.buildSamelineDropTarget(insert_after_el).insertAfter(insert_after_el);
-        		}
-        	}
+            var insert_after_el = this.getInsertAfterEl(bottom_above_element);
+            this.buildSamelineDropTarget(insert_after_el).insertAfter(insert_after_el);
+          }
+        }
 
       } else {
         $(".target").removeClass("target");
@@ -151,15 +151,16 @@ define([
 
     handleTempDrop: function(tempDropEvent, mouseEvent, model, widthOffset, index){
       if($(".target").length || $("#temp_drop_target").length) {
-      	if($(".target").length)
-        	var index = $(".target").index()
-        else
-            var index =  $('#temp_drop_target').index();
+        if($(".target").length) {
+          var index = $(".target").index()
+        } else {
+          var index =  $('#temp_drop_target').index();
+        }
         // adjust insert position for multiple columns
         // index++ may be problematic for more than 2 columns
-        if(index % 2==1 && this.columns>1)
-        	index++;
-
+        if(index % 2==1 && this.columns>1) {
+          index++;
+        }
         this.collection.add(model,{at: index+1});
       }
 
