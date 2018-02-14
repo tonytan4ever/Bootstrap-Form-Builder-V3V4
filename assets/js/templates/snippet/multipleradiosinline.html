@@ -2,8 +2,8 @@
 <div class="form-group row">
   <label class="col-md-4 col-form-label text-right font-weight-bold" for="{{ name }}">{{ label }}</label>
   <div class="col-md-4">{{ #radios }}
-    <label class="radio-inline" for="{{ name }}-{{ index }}">
-      <input type="radio" name="{{ name }}" id="{{ name }}-{{ getIndex }}" value="{{ #radiosValues }}{{ #getNthValue }}{{.}}{{/getNthValue}}{{ /radiosValues }}"  {{#first}} checked="checked" {{/first}}>
+    <label class="radio-inline" for="mri-{{ name }}-{{ index }}">
+      <input type="radio" name="{{ name }}" id="mri-{{ name }}-{{ getIndex }}" value="{{ #radiosValues }}{{ #getNthValue }}{{.}}{{/getNthValue}}{{ /radiosValues }}"  {{#first}} checked="checked" {{/first}}>
       {{ . }}
     </label>{{ /radios }}
 	{{ resetIndex }}

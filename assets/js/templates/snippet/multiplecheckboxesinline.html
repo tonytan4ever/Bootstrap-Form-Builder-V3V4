@@ -2,8 +2,8 @@
 <div class="form-group row">
   <label class="col-md-4 col-form-label text-right font-weight-bold" for="{{ name }}">{{ label }}</label>
   <div class="col-md-4">{{ #checkboxes }}
-      <label class="checkbox-inline" for="{{ name }}-{{ index }}">
-      <input type="checkbox" name="{{ name }}" id="{{ name }}-{{ getIndex }}" value="{{ #checkboxesValues }}{{ #getNthValue }}{{.}}{{/getNthValue}}{{ /checkboxesValues }}" >
+      <label class="checkbox-inline" for="mci-{{ name }}-{{ index }}">
+      <input type="checkbox" name="{{ name }}" id="mci-{{ name }}-{{ getIndex }}" value="{{ #checkboxesValues }}{{ #getNthValue }}{{.}}{{/getNthValue}}{{ /checkboxesValues }}" >
       {{ . }}
       </label>{{ /checkboxes }}
 	 {{ resetIndex }}

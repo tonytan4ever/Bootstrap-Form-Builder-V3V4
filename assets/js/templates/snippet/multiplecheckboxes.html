@@ -3,8 +3,8 @@
   <label class="col-md-4 col-form-label text-right font-weight-bold" for="{{ name }}">{{ label }}</label>
   <div class="col-md-4">{{ #checkboxes }}
     <div class="checkbox">
-	    <label  for="{{ name }}-{{ index }}">
-	      <input type="checkbox" name="{{ name }}" id="{{ name }}-{{ getIndex }}" value="{{ #checkboxesValues }}{{ #getNthValue }}{{.}}{{/getNthValue}}{{ /checkboxesValues }}" >
+	    <label  for="mc-{{ name }}-{{ index }}">
+	      <input type="checkbox" name="{{ name }}" id="mc-{{ name }}-{{ getIndex }}" value="{{ #checkboxesValues }}{{ #getNthValue }}{{.}}{{/getNthValue}}{{ /checkboxesValues }}" >
 	      {{ . }}
 	    </label>
 	</div>{{ /checkboxes }}

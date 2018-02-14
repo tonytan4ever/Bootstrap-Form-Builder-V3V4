@@ -3,8 +3,8 @@
   <label class="col-md-4 col-form-label text-right font-weight-bold" for="{{ name }}">{{ label }}</label>
   <div class="col-md-4">{{ #radios }}
     <div class="radio">
-	    <label  for="{{ name }}-{{ index }}">
-	      <input type="radio" name="{{ name }}" id="{{ name }}-{{ getIndex }}" value="{{ #radiosValues }}{{ #getNthValue }}{{.}}{{/getNthValue}}{{ /radiosValues }}"  {{#first}} checked="checked" {{/first}}>
+	    <label  for="mr-{{ name }}-{{ index }}">
+	      <input type="radio" name="{{ name }}" id="mr-{{ name }}-{{ getIndex }}" value="{{ #radiosValues }}{{ #getNthValue }}{{.}}{{/getNthValue}}{{ /radiosValues }}"  {{#first}} checked="checked" {{/first}}>
 	      {{ . }}
 	    </label>
 	</div>{{ /radios }}
