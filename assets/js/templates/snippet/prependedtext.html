@@ -1,13 +1,15 @@
 <!-- Prepended text-->
-<div class="form-group">
-  <label class="col-sm-4 control-label" for="{{ id }}">{{ label }}</label>
-    <div class="input-group {{ inputsize }}">
-      <div class="input-group-prepend">
-        <span class="input-group-text">
-          {{ prepend }}
-        </span>
+<div class="form-group row">
+  <label class="col-sm-4 col-form-label text-right" for="{{ id }}">{{ label }}</label>
+    <div class="{{ inputwidth }}">
+      <div class="input-group {{ inputsize }}">
+        <div class="input-group-prepend">
+          <span class="input-group-text">
+            {{ prepend }}
+          </span>
+        </div>
+        <input id="{{ id }}" name="{{ id }}" class="form-control" placeholder="{{ placeholder }}" type="text" {{#required}} required="true" {{/required}} {{^required}} {{/required}} />
       </div>
-      <input id="{{ id }}" name="{{ id }}" class="form-control" placeholder="{{ placeholder }}" type="text" {{#required}} required="true" {{/required}} {{^required}} {{/required}} />
+      {{#helptext.length}} <span class="form-text text-muted">{{ helptext }}</span> {{/helptext.length}}
     </div>
-    {{#helptext.length}} <span class="form-text text-muted">{{ helptext }}</span> {{/helptext.length}}
 </div>

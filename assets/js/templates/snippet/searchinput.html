@@ -1,10 +1,14 @@
 <!-- Search input-->
-<div class="form-group">
-  <label class="control-label" for="{{ id }}">{{ label }}</label>
-  	<div class="input-group">
-	    <input id="{{ id }}" name="{{ id }}" data-i-search-input="true" data-autocomplete="true" data-autocomplete-url=""
-	         type="text" placeholder="{{ placeholder }}" class="form-control {{ inputsize }} search-query" {{#required}} required="true" {{/required}} {{^required}} {{/required}} />
-	    <span class="input-group-btn"><button class="btn btn-primary" type="submit">Search</button></span>
-  	</div>
-  	{{#helptext.length}} <span class="form-text text-muted">{{ helptext }}</span> {{/helptext.length}}
+<div class="form-group row">
+  <label class="col-sm-4 col-form-label text-right" for="{{ id }}">{{ label }}</label>
+	<div class="{{ inputwidth }}">
+		<div class="input-group {{ inputsize }}">
+			<input id="{{ id }}" name="{{ id }}" data-i-search-input="true" data-autocomplete="true" data-autocomplete-url=""
+				 type="text" placeholder="{{ placeholder }}" class="form-control search-query" {{#required}} required="true" {{/required}} {{^required}} {{/required}} />
+			<div class="input-group-append">
+				<button class="btn btn-primary" type="submit">Search</button>
+			</div>
+		</div>
+		{{#helptext.length}} <span class="form-text text-muted">{{ helptext }}</span> {{/helptext.length}}
+	</div>
 </div>
