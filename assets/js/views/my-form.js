@@ -113,36 +113,35 @@ define([
       handleTempMove: function(tempMoveEvent, mouseEvent, widthOffset){
         $(".target").removeClass("target");
         if(mouseEvent.pageX >= this.$build.offset().left  &&
-        mouseEvent.pageX < (this.$build.width() + this.$build.offset().left
-        + widthOffset) &&
-        mouseEvent.pageY >= this.$build.offset().top &&
-        mouseEvent.pageY < (this.$build.height() + this.$build.offset().top)
-      ){
-        var bottom_above_element = this.getBottomAbove(mouseEvent.pageY);
-        var data_title_attr = $(bottom_above_element).attr("data-title");
+           mouseEvent.pageX < (this.$build.width() + this.$build.offset().left + widthOffset) &&
+           mouseEvent.pageY >= this.$build.offset().top &&
+           mouseEvent.pageY < (this.$build.height() + this.$build.offset().top)
+        ) {
+            var bottom_above_element = this.getBottomAbove(mouseEvent.pageY);
+            var data_title_attr = $(bottom_above_element).attr("data-title");
 
-        // handle multi-columns target rendering
-        $(bottom_above_element).addClass("target");
-        if(this.columns > 1){
-          // remove possible previous drop target.
-          if($("div#temp_drop_target").length) {
-            $("div#temp_drop_target").remove();
-          }
+            // handle multi-columns target rendering
+            $(bottom_above_element).addClass("target");
+            if(this.columns > 1){
+              // remove possible previous drop target.
+              if($("div#temp_drop_target").length) {
+                $("div#temp_drop_target").remove();
+              }
 
-          if(data_title_attr == 'Form Name'){
-            $(bottom_above_element).addClass("head-insert");
-          } else {
-            $(".head-insert").removeClass("head-insert");
-          }
+              if(data_title_attr == 'Form Name'){
+                $(bottom_above_element).addClass("head-insert");
+              } else {
+                $(".head-insert").removeClass("head-insert");
+              }
 
-          // TODO: Y coordinate for same row insert
-          if(mouseEvent.pageX >= this.$build.width()/this.columns + this.$build.offset().left + widthOffset){
-            $(bottom_above_element).removeClass('target');
+              // TODO: Y coordinate for same row insert
+              if(mouseEvent.pageX >= this.$build.width()/this.columns + this.$build.offset().left + widthOffset){
+                $(bottom_above_element).removeClass('target');
 
-            var insert_after_el = this.getInsertAfterEl(bottom_above_element);
-            this.buildSamelineDropTarget(insert_after_el).insertAfter(insert_after_el);
-          }
-        }
+                var insert_after_el = this.getInsertAfterEl(bottom_above_element);
+                this.buildSamelineDropTarget(insert_after_el).insertAfter(insert_after_el);
+              }
+            }
 
       } else {
         $(".target").removeClass("target");
