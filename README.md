@@ -25,6 +25,9 @@ TODO/Limitations:
   * The two widgets in the same row have to be of the same height (otherwise you will see misalign-ment). We are actively working to fix it.
 
 
-### Project Plan: Support for Bootstrap V4
+### WIP: Better 2-column layout support, V4 Support
+
+Bootstrap V4 formbuilder demo:
+http://formbuilder-v4.tdjangoy.webfactional.com/
 
 
