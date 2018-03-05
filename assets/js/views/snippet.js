@@ -41,6 +41,8 @@ define([
       var template_str = _snippetTemplates[this.model.idFriendlyTitle()];
       if(this.component_width && this.model.idFriendlyTitle() != 'formname'){
       	this.$el.addClass(this.component_width);
+      	// temporary fix to support V4 2-column layout
+      	this.$el.css("float", "left");
       
       	var outter_div_template = "<div class="+ this.component_width + ">{{{inner_html}}}</div>";
       	template_str = Mustache.to_html(outter_div_template, { inner_html:template_str  });
@@ -86,6 +88,7 @@ define([
         //	var temp_return_el = return_el;
         // 	return_el = $('<div class="row"/>');
         //	return_el.append(temp_return_el);
+        	console.log(return_el.children());
         	return_el.children().first().removeClass(this.component_width);
         }
         return return_el;
