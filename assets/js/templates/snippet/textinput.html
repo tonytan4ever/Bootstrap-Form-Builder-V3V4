@@ -1,8 +1,8 @@
 <!-- Text input-->
-<div class="form-group">
-  <label class="col-sm-4 control-label" for="{{ id }}">{{ label }}</label>
+<div class="form-group row">
+  <label class="col-sm-4 col-form-label text-right font-weight-bold" for="{{ id }}">{{ label }}</label>
   <div class="{{ inputwidth }}">
     <input id="{{ id }}" name="{{ id }}" type="text" placeholder="{{ placeholder }}" class="form-control {{ inputsize }}" {{#required}} required="true" {{/required}} {{^required}} {{/required}} />
-    {{#helptext.length}} <span class="help-block">{{ helptext }}</span> {{/helptext.length}}
+    {{#helptext.length}} <span class="form-text text-muted">{{ helptext }}</span> {{/helptext.length}}
   </div>
 </div>

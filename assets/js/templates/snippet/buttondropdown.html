@@ -1,21 +1,20 @@
 <!-- Button Drop Down -->
-<div class="form-group">
-  <label class="col-sm-4 control-label" for="{{ id }}">{{ label }}</label>
-  <div class="{{ inputwidth }}">
-    <div class="input-group">
-      <input id="{{ id }}" name="{{ id }}" class="form-control {{ inputsize }}" placeholder="{{ placeholder }}" type="text" {{#required}} required="true" {{/required}} {{^required}} {{/required}} />
-      <div class="input-group-btn">
-        <button class="btn dropdown-toggle" data-toggle="dropdown">
-          {{ buttontext }}
-          <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu pull-right">
-          {{#buttonoptions}}
-          <li><a href="#">{{ . }}</a></li>
-          {{/buttonoptions}}
-        </ul>
+<div class="form-group row">
+  <label class="col-sm-4 col-form-label text-right font-weight-bold" for="{{ id }}">{{ label }}</label>
+    <div class="{{ inputwidth }}">
+      <div class="input-group">
+        <input id="{{ id }}" name="{{ id }}" class="form-control {{ inputsize }}" placeholder="{{ placeholder }}" type="text" {{#required}} required="true" {{/required}} {{^required}} {{/required}} />
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown">
+            {{ buttontext }}
+          </button>
+          <div class="dropdown-menu pull-right">
+            {{#buttonoptions}}
+            <a class="dropdown-item" href="#">{{ . }}</a>
+            {{/buttonoptions}}
+          </div>
+        </div>
       </div>
-    </div>
-    {{#helptext.length}} <span class="help-block">{{ helptext }}</span> {{/helptext.length}}
+    {{#helptext.length}} <span class="form-text text-muted">{{ helptext }}</span> {{/helptext.length}}
   </div>
 </div>

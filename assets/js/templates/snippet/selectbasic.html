@@ -1,11 +1,11 @@
 <!-- Select Basic -->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="{{ id }}">{{ label }}</label>
-  <div class="{{ inputsize }}">
-    <select id="{{ id }}" name="{{ id }}" class="form-control">{{ #options }}
-      {{ increIndex }}
-      <option value="{{ #values }}{{ #getNthValue }}{{.}}{{/getNthValue}}{{ /values }}">{{ . }}</option>{{ /options }}
-      {{ resetIndex }}
-    </select>
-  </div>
+<div class="form-group row">
+  <label class="col-md-4 col-form-label text-right font-weight-bold" for="{{ id }}">{{ label }}</label>
+    <div class="{{ inputsize }}">
+      <select id="{{ id }}" name="{{ id }}" class="form-control">{{ #options }}
+        {{ increIndex }}
+        <option value="{{ #values }}{{ #getNthValue }}{{.}}{{/getNthValue}}{{ /values }}">{{ . }}</option>{{ /options }}
+        {{ resetIndex }}
+      </select>
+    </div>
 </div>

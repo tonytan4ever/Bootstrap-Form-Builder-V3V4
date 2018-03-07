@@ -1,13 +1,15 @@
 <!-- Prepended checkbox -->
-<div class="form-group">
-  <label class="col-sm-4 control-label" for="{{ id }}">{{ label }}</label>
-  <div class="{{ inputwidth }}">
-    <div class="input-group">
-      <span class="input-group-addon">
-          <input type="checkbox" {{#checked}}checked="checked"{{/checked}} />
-      </span>
-      <input id="{{ id }}" name="{{ id }}" class="form-control {{ inputsize }}" type="text" placeholder="{{ placeholder }}" {{#required}} required="true" {{/required}} {{^required}} {{/required}} />
+<div class="form-group row">
+  <label class="col-sm-4 col-form-label text-right font-weight-bold" for="{{ id }}">{{ label }}</label>
+    <div class="{{ inputwidth }}">
+        <div class="input-group {{ inputsize }}">
+          <div class="input-group-prepend">
+              <div class="input-group-text">
+                  <input type="checkbox" {{#checked}}checked="checked"{{/checked}} />
+              </div>
+          </div>
+          <input id="{{ id }}" name="{{ id }}" class="form-control" type="text" placeholder="{{ placeholder }}" {{#required}} required="true" {{/required}} {{^required}} {{/required}} />
+        </div>
+        {{#helptext.length}} <span class="form-text text-muted">{{ helptext }}</span>{{/helptext.length}}
     </div>
-    {{#helptext.length}} <span class="help-block">{{ helptext }}</span> {{/helptext.length}}
-  </div>
 </div>

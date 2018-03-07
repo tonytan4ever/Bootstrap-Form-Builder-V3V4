@@ -1,11 +1,18 @@
 <!-- Appended Input-->
-<div class="form-group">
-  <label class="col-sm-4 control-label" for="{{ id }}">{{ label }}</label>
-  <div class="{{ inputwidth }}">
-    <div class="input-group">
-      <input id="{{ id }}" name="{{ id }}" class="form-control {{ inputsize }}" placeholder="{{ placeholder }}" type="text" {{#required}} required="true" {{/required}} {{^required}} {{/required}} />
-      <span class="input-group-addon">{{ append }}</span>
+<div class="form-group row">
+    <label class="col-sm-4 col-form-label text-right font-weight-bold" for="{{ id }}">{{ label }}</label>
+    <div class="{{ inputwidth }}">
+        <div class="input-group {{ inputsize }}">
+            <input id="{{ id }}" name="{{ id }}"
+                   class="form-control {{ inputsize }}"
+                   placeholder="{{ placeholder }}" type="text" {{#required}}
+                   required="true" {{/required}} {{^required}} {{/required}} />
+            <div class="input-group-append">
+                <span class="input-group-text">
+                    {{append}}
+                </span>
+            </div>
+        </div>
+        {{#helptext.length}} <span class="form-text text-muted">{{ helptext }}</span>{{/helptext.length}}
     </div>
-    {{#helptext.length}} <span class="help-block">{{ helptext }}</span> {{/helptext.length}}
-  </div>
 </div>

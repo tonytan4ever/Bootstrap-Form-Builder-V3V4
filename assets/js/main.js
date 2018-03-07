@@ -1,28 +1,40 @@
 require.config({
   baseUrl: "assets/js/lib/",
   paths: {
-	'jquery': 'http://code.jquery.com/jquery-2.1.0',
+	'jquery': 'https://code.jquery.com/jquery-3.2.1',
 	'mustache' : "http://rawgithub.com/janl/mustache.js/master/mustache",
-	'bootstrap' : "http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap",
+	'popper' : "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper",
+	'bootstrap' : "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap",
 	'underscore' :  "https://rawgithub.com/jashkenas/underscore/master/underscore",
 	'text'  : "https://rawgithub.com/requirejs/text/latest/text",
 	'app'   : "..",
-	 collections : "../collections", 
-	 data        : "../data", 
-	 models      : "../models", 
-	 helper      : "../helper", 
-	 templates   : "../templates", 
+	 collections : "../collections",
+	 data        : "../data",
+	 models      : "../models",
+	 helper      : "../helper",
+	 templates   : "../templates",
 	 views       : "../views"
-  }, shim: {
+  },
+  shim: {
     'underscore': {
 	      exports: '_'
-	},  
-	  
-    'bootstrap': {
-      deps: ['jquery'],
-      exports: '$.fn.popover'
-    }
+	},
+    'popper': {
+        'exports': 'Popper.default'
+    },
+    bootstrap: {
+      deps: ['jquery', 'popper'],
+      exports: 'bootstrap'
+    },
   }
+});
+
+
+require(['jquery','popper'], function($, popper){
+  window.Popper = popper;
+  require([ 'bootstrap'], function(bootstrap) {
+    console.log("loaded");
+  });
 });
 
 require(['app/app'], function(app){
