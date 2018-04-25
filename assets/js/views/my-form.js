@@ -18,9 +18,7 @@ define([
       this.collection = options.collection;
 
       //(TODO:) modify on add to render in more sizable way
-      this.collection.on("add", $.proxy(this.render, this));
-      this.collection.on("remove", $.proxy(this.render, this));
-      this.collection.on("change", $.proxy(this.render, this));
+      this.bindCollectionEvents();
 
       this.$el = $("<fieldset/>")
       this.$build = $("#build");
@@ -32,6 +30,12 @@ define([
       this.renderForm = _.partial(Mustache.to_html, _renderForm);
       this.render();
     },
+    
+    bindCollectionEvents: function() {
+  	  this.collection.on("add", $.proxy(this.render, this));
+	  this.collection.on("remove", $.proxy(this.render, this));
+	  this.collection.on("change", $.proxy(this.render, this));
+	},
 
     setLayoutNumberOfColumns: function(layout_number_of_columns) {
       // reset the elements in your form if the layout has changed.
@@ -46,15 +50,15 @@ define([
       this.$el.empty();
       var that = this;
 
-      _.each(this.collection.renderAll(), function(snippet){
-        that.$el.append(snippet);
-      });
-
       if(this.columns == 2) {
         this.collection.setEachComponentWidth("col-sm-6", this.columns);
       } else {
         this.collection.setEachComponentWidth(null, this.column);
       }
+      
+      _.each(this.collection.renderAll(), function(snippet){
+          that.$el.append(snippet);
+      });
 
       $("#render").html(that.renderForm({
         text: _.map(this.collection.renderAllClean(), function(e){return e.html()}).join("\n")
