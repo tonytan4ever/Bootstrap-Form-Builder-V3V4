@@ -113,10 +113,14 @@ define([
 	    	    		try {
 	    	    		  let form_layout_json = JSON.parse(evt.target.result);
 	    	    		  // myform_view.collection = new MyFormSnippetsCollection([]);
-	    	    		  myform_view.columns = form_layout_json.layout_number_of_columns;
+	    	    		  myform_view.setLayoutNumberOfColumns(form_layout_json.layout_number_of_columns);
 	    	    		  myform_view.collection = new MyFormSnippetsCollection(form_layout_json.data);
 	    	    		  myform_view.bindCollectionEvents();
 	    	    		  myform_view.render();
+	    	    		 
+	    	    		  
+	    	    		  output_tpl = _.template("Form Layout: <%= number %> column(s)");	    
+	    	    		  $('#form-layout-text').val(output_tpl({number: form_layout_json.layout_number_of_columns}));
 	    	    		}
 	    	    		catch(error) {
 	    	    			alert("Parsing form layout file error:" + error)

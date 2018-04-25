@@ -42,23 +42,24 @@ define([
       if(this.columns != layout_number_of_columns)
       	this.collection.data = _.initial(this.collection.data, this.collection.data.length-1);
       this.columns = layout_number_of_columns;
+      _.each()
     },
     
     render: function(){
     
       //Render Snippet Views
       this.$el.empty();
-      var that = this;
-      
-      _.each(this.collection.renderAll(), function(snippet){
-        that.$el.append(snippet);
-      });
+      var that = this;      
       
       if(this.columns == 2) {
       	this.collection.setEachComponentWidth("col-sm-6", this.columns);
       } else {
       	this.collection.setEachComponentWidth(null, this.column);
       }
+      
+      _.each(this.collection.renderAll(), function(snippet){
+          that.$el.append(snippet);
+       });
       
       $("#render").html(that.renderForm({
         text: _.map(this.collection.renderAllClean(), function(e){return e.html()}).join("\n")
@@ -153,7 +154,6 @@ define([
     }, 
     
     handleTempDrop: function(tempDropEvent, mouseEvent, model, widthOffset, index){
-    	  console.log("Called");
       if($(".target").length || $("#temp_drop_target").length) {
       	if($(".target").length)
       		var index = $(".target").index() 
