@@ -18,9 +18,7 @@ define([
       this.collection = options.collection;
     
       //(TODO:) modify on add to render in more sizable way
-      this.collection.on("add", $.proxy(this.render, this));
-      this.collection.on("remove", $.proxy(this.render, this));
-      this.collection.on("change", $.proxy(this.render, this));
+      this.bindCollectionEvents();
       
       this.$el = $("<fieldset/>")
       this.$build = $("#build");
@@ -32,6 +30,12 @@ define([
       this.renderForm = _.partial(Mustache.to_html, _renderForm);
       this.render();
     }, 
+    
+    bindCollectionEvents: function() {
+    	  this.collection.on("add", $.proxy(this.render, this));
+      this.collection.on("remove", $.proxy(this.render, this));
+      this.collection.on("change", $.proxy(this.render, this));
+    },
     
     setLayoutNumberOfColumns: function(layout_number_of_columns) {
       // reset the elements in your form if the layout has changed.
@@ -149,15 +153,17 @@ define([
     }, 
     
     handleTempDrop: function(tempDropEvent, mouseEvent, model, widthOffset, index){
+    	  console.log("Called");
       if($(".target").length || $("#temp_drop_target").length) {
       	if($(".target").length)
-        	var index = $(".target").index() 
+      		var index = $(".target").index() 
         else
             var index =  $('#temp_drop_target').index();
         // adjust insert position for multiple columns
         // index++ may be problematic for more than 2 columns
         if(index % 2==1 && this.columns>1)
-        	index++;
+        		index++;
+
 
         this.collection.add(model,{at: index+1});
       } 
