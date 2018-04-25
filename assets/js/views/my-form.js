@@ -18,9 +18,7 @@ define([
       this.collection = options.collection;
     
       //(TODO:) modify on add to render in more sizable way
-      this.collection.on("add", $.proxy(this.render, this));
-      this.collection.on("remove", $.proxy(this.render, this));
-      this.collection.on("change", $.proxy(this.render, this));
+      this.bindCollectionEvents();
       
       this.$el = $("<fieldset/>")
       this.$build = $("#build");
@@ -33,28 +31,35 @@ define([
       this.render();
     }, 
     
+    bindCollectionEvents: function() {
+    	  this.collection.on("add", $.proxy(this.render, this));
+      this.collection.on("remove", $.proxy(this.render, this));
+      this.collection.on("change", $.proxy(this.render, this));
+    },
+    
     setLayoutNumberOfColumns: function(layout_number_of_columns) {
       // reset the elements in your form if the layout has changed.
       if(this.columns != layout_number_of_columns)
       	this.collection.data = _.initial(this.collection.data, this.collection.data.length-1);
       this.columns = layout_number_of_columns;
+      _.each()
     },
     
     render: function(){
     
       //Render Snippet Views
       this.$el.empty();
-      var that = this;
-      
-      _.each(this.collection.renderAll(), function(snippet){
-        that.$el.append(snippet);
-      });
+      var that = this;      
       
       if(this.columns == 2) {
       	this.collection.setEachComponentWidth("col-sm-6", this.columns);
       } else {
       	this.collection.setEachComponentWidth(null, this.column);
       }
+      
+      _.each(this.collection.renderAll(), function(snippet){
+          that.$el.append(snippet);
+       });
       
       $("#render").html(that.renderForm({
         text: _.map(this.collection.renderAllClean(), function(e){return e.html()}).join("\n")
@@ -151,13 +156,14 @@ define([
     handleTempDrop: function(tempDropEvent, mouseEvent, model, widthOffset, index){
       if($(".target").length || $("#temp_drop_target").length) {
       	if($(".target").length)
-        	var index = $(".target").index() 
+      		var index = $(".target").index() 
         else
             var index =  $('#temp_drop_target').index();
         // adjust insert position for multiple columns
         // index++ may be problematic for more than 2 columns
         if(index % 2==1 && this.columns>1)
-        	index++;
+        		index++;
+
 
         this.collection.add(model,{at: index+1});
       } 
