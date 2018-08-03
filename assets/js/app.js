@@ -92,7 +92,7 @@ define([
 		    anchor.download = "form_layout_" + formName + ".txt";
 		    anchor.href = (window.webkitURL || window.URL).createObjectURL(blob);
 		    anchor.dataset.downloadurl = ['text/plain', anchor.download, anchor.href].join(':');
-		    anchor.click();
+		    anchor.dispatchEvent(new MouseEvent(`click`, {bubbles: true, cancelable: true, view: window}));
 	    });
     
     
