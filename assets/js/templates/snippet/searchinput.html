@@ -1,6 +1,6 @@
 <!-- Search input-->
 <div class="form-group">
-  <label class="col-sm-4 control-label" for="{{ id }}">{{ label }}</label>
+  <label class="col-sm-4 control-label" for="{{ id }}">{{ label }}{{#required}} *{{/required}}{{^required}}{{/required}}</label>
   <div class="{{ inputwidth }}">
   	<div class="input-group">
 	    <input id="{{ id }}" name="{{ id }}" data-i-search-input="true" data-autocomplete="true" data-autocomplete-url="" 
