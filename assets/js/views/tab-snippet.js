@@ -1,10 +1,8 @@
 define([
-       "jquery", "underscore",
        "models/snippets", 
        "views/snippet", 
        "views/temp-snippet", 
-], function(
-  $, _, 
+], function( 
   SnippetModel, 
   SnippetView, 
   TempSnippetView 

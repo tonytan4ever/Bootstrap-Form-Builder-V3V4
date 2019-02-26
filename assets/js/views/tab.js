@@ -1,5 +1,5 @@
-define([ 'jquery', 'underscore', 'mustache', 'class', "text!templates/app/tab-nav.html"
-], function($, _, Mustache, Class, _tabNavTemplate){
+define([ 'class', "text!templates/app/tab-nav.html"
+], function(Class, _tabNavTemplate){
 	
 	return Class.extend({
 		init: function(options) {

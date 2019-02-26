@@ -1,13 +1,11 @@
 define([
-       "jquery", 
        "collections/snippets",
        "collections/my-form-snippets", 
        "views/tab",
        "views/my-form",
        "text!data/input.json", "text!data/radio.json", "text!data/select.json", "text!data/button.json",
        "text!templates/app/render.html",  "text!templates/app/about.html",  
-], function(
-  $, 
+], function( 
   SnippetsCollection, 
   MyFormSnippetsCollection,
   TabView,
@@ -71,6 +69,8 @@ define([
 		
 		//Deal with the layout column selector
 	    $('#form-layout li').on('click', function(){
+	    	
+	    	console.log("here")
 	    
 	    	var output_tpl = _.template("Form Layout: <%= number %> column(s)");	    
 		    $('#form-layout-text').val(output_tpl({number: $(this).attr("value")}));

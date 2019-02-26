@@ -1,9 +1,7 @@
 define([
-       "jquery", "underscore", "mustache", 
        "views/snippet", 
        "text!templates/app/temp.html"
 ], function(
-  $, _, Mustache,
   SnippetView, _tempTemplate
 ){
   return SnippetView.extend({

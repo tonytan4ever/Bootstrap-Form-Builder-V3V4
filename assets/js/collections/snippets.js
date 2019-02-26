@@ -1,9 +1,9 @@
 define([
-       "jquery" , "underscore" , "class", 
+      "class", 
        "models/snippets", 
        "views/tab-snippet"
 ], function(
-  $, _, Class, 
+  Class, 
   SnippetModel, 
   TabSnippetView
 ){

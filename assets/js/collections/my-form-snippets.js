@@ -1,10 +1,10 @@
 define([
-       "jquery" , "underscore" , "class", 
+       "class", 
        "models/snippets", 
        "collections/snippets", 
        "views/my-form-snippet"
 ], function(
-  $, _, Class, 
+  Class, 
   SnippetModel, 
   SnippetsCollection, 
   MyFormSnippetView

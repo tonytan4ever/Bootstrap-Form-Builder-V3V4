@@ -1,5 +1,5 @@
 define([
-  "jquery", "mustache", "underscore", "class", 
+  "class", 
   "text!templates/popover/popover-main.html", 
   "text!templates/popover/popover-input.html", 
   "text!templates/popover/popover-select.html", 
@@ -7,9 +7,8 @@ define([
   "text!templates/popover/popover-textarea-split.html", 
   "text!templates/popover/popover-checkbox.html", 
   "templates/snippet/snippet-templates", 
-  "bootstrap"
 ], function(
-  $, Mustache, _, Class, 
+  Class, 
   _PopoverMain, 
   _PopoverInput,
   _PopoverSelect, 

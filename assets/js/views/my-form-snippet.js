@@ -1,8 +1,8 @@
 define([
-       "jquery", "underscore", "class",
+       "class",
        "views/snippet", 
 ], function(
-  $, _, Class,
+  Class,
   SnippetView
 ){
   return SnippetView.extend({

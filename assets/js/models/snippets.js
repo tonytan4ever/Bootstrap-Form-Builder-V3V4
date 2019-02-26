@@ -1,6 +1,6 @@
 define([
-      'jquery', 'underscore', 'class'
-], function($,  _, Class) {
+  'class'
+], function(Class) {
   return Class.extend({
     init: function(options){
     	this.options = options;

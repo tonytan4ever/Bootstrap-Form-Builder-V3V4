@@ -1,9 +1,9 @@
 define([
-  "jquery", "mustache", "underscore", "class",
+  "class",
   "views/temp-snippet",
   "text!templates/app/renderform.html"
 ], function(
-  $, Mustache, _, Class,
+  Class,
   TempSnippetView,
   _renderForm
 ){
