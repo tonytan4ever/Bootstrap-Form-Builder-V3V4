@@ -1,5 +1,6 @@
 define([
-       "jquery", 
+       "jquery",
+       "underscore",
        "collections/snippets",
        "collections/my-form-snippets", 
        "views/tab",
@@ -7,7 +8,8 @@ define([
        "text!data/input.json", "text!data/radio.json", "text!data/select.json", "text!data/button.json",
        "text!templates/app/render.html",  "text!templates/app/about.html",  
 ], function(
-  $, 
+  $,
+  _,
   SnippetsCollection, 
   MyFormSnippetsCollection,
   TabView,
